@@ -1,6 +1,8 @@
 ## 1. Shapiro-Wilk test for every sub-group at once ----
 data_analysis |>
   group_by(group_name, type) |>
+# Only attempt the test if n >= 3 (mock data workaround)
+  filter(n() >= 3) |>
   shapiro_test(mean_score) |>
   add_significance()
 
