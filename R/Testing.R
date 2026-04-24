@@ -27,9 +27,9 @@ print(ks_results)
 ## 3. Wilcoxon test between KG and TG (excluding Anchor)----
 stat_test <- data_analysis |>
   filter(type == "Manipulated") |>
-  rstatix::wilcox_test(mean_score ~ group_name) |> # Explicitly use rstatix
+  #rstatix::wilcox_test(mean_score ~ group_name) |> # Explicitly use rstatix
   ## uncomment next line for two-sided alternative (for github).
-  #rstatix::wilcox_test(mean_score ~ group_name, alternative = "two.sided") |> 
+  rstatix::wilcox_test(mean_score ~ group_name, alternative = "two.sided") |> 
   add_significance()
 
 print(stat_test)
