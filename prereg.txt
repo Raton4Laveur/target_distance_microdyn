@@ -1,0 +1,53 @@
+'The Effect of Target Distance on Knowledge Application in MicroDYN Systems'
+Not public yet
+AsPredicted #: ...
+Author(s)
+...
+Pre-registered on
+...
+1) Have any data been collected for this study already?
+No, no data have been collected for this study yet.
+
+2) What's the main question being asked or hypothesis being tested in this study?
+Main Question: Does the distance between starting value and target value influence performance in successful knowledge application in MicroDYN systems?
+Null hypothesis (H0): There is no difference in performance between the two groups.
+Hypothesis (H1): Participants in the experimental group with higher target distances will show lower performance in knowledge application than participants in the control group with lower target distances.
+The hypothesis is directional, as increased target distance is assumed to raise task demands, thereby reducing performance.
+
+3) Describe the key dependent variable(s) specifying how they will be measured.
+The dependent variable is performance in knowledge application. It is operationalized using a partial scoring procedure based on the MicroDYN task in the knowledge application phase. Participants receive one point for each successfully reached target value within the maximum of 4 rounds and the predefined time limit of 90 seconds per item in the knowledge application phase. If participants reach only a subset of the target values within the specified round or time limit, partial credit is given in proportion to the number of successfully achieved targets (range: 0–1). For example, in items with two outputs, a score of .50 indicates that one of two targets was reached; in items with three outputs, scores of .33, .67, or 1.00 indicate one, two, or all three targets reached, respectively.
+The dependent variable will be calculated as the unweighted mean of item-level scores across all completed items. Participants with missing values on the dependent variable will be excluded prior to aggregation. The resulting variable is treated as approximately interval-scaled.
+
+4) How many and which conditions will participants be assigned to?
+Participants will be randomly assigned to two experimental conditions:
+Control condition (low target distance): Target values are closer to the initial state and can be reached without requiring all available rounds (4). The target values lie within an interval of +/-3, which participants must reach in both conditions to score points. In the control condition, these corridors are closer to the starting point of the systems (all outputs start at 50). The sum of the absolute distances of the target values is 28 in the control group.
+Experimental condition (high target distance): Target values are further away from the initial state in 6 out of 9 items and require more precise and efficient knowledge application within the same time limit and the same number of rounds. The sum of the absolute distances of the target values is 42 in the experimental condition.
+Participants will complete 9 items. The manipulation is designed to increase task difficulty specifically in the application phase without affecting knowledge acquisition.
+
+5) Specify exactly which analyses you will conduct to examine the main question/hypothesis.
+The analysis examines whether target distance influences performance in knowledge application. The dependent variable (performance score) will be compared between the two independent groups (low vs. high target distance). The independence of the groups is ensured by the between-subjects design. The significance level is set to α = .05.
+The analysis follows a predefined decision tree:
+1. Normality of the dependent variable will be assessed separately for each group using the Shapiro–Wilk test (α = .05). In addition, graphical methods (Q–Q plots, histograms and density plots with reference lines) will be used for visual inspection.
+2. If both groups are approximately normally distributed: Homogeneity of variances will be tested using Levene's test.
+If variances are equal (Levene's test: p ≥ .05), a one-sided independent samples t-test (Student's t-test) will be conducted. This test will evaluate whether performance in the high target distance condition is significantly lower than in the low target distance condition.
+If variances are unequal (Levene's test: p < .05), a Welch t-test will be conducted.
+3. If at least one group violates normality: A nonparametric Wilcoxon rank-sum test (Mann–Whitney U) will be conducted.
+Effect sizes will be reported as Cohen's d for t-tests or r for the Wilcoxon test.
+The analyses will be conducted in R (version 4.5.3) and the code will be made available.
+
+6) Describe exactly how outliers will be defined and handled, and your precise rule(s) for excluding observations.
+Participants with incomplete data in the MicroDYN test will be excluded entirely from the analyses. This exclusion does not apply to incorrect responses or cases in which the given time expired without successful task completion or input. Instead, it targets instances where items were processed within an implausibly short time frame, suggesting that the responses are not reliable indicators of genuine task engagement. Therefore, participants will be excluded if their total completion time falls outside ±2 standard deviations of the mean completion time of the sample, indicating insufficient task engagement. This exclusion criterion applies only to unusually fast completion times since unusually long completion times will be counted as a failure to successfully interact with the system through the given time limit per item.
+No statistical outlier removal (e.g., based on z-scores or IQR) will be performed. All valid observations will be retained unless they meet predefined exclusion criteria
+
+7) How many observations will be collected or what will determine sample size?
+No need to justify decision, but be precise about exactly how the number will be determined.
+The target sample size is N = 278 participants, with 139 participants per group.
+This number is based on an a priori power analysis for a one-sided independent samples t-test (Student's t-test) with:
+• Effect size: d = 0.30 (small effect)
+• Significance level: α = .05
+• Power: 1 − β = .80
+Participants will be randomly assigned to one of the two conditions.
+
+8) Anything else you would like to pre-register?
+(e.g., secondary analyses, variables collected for exploratory purposes, unusual analyses planned?)
+No additional confirmatory analyses are planned. The study follows a strict a priori analysis plan. No data will be inspected before analysis decisions are finalized.
