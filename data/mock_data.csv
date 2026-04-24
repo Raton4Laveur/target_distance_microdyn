@@ -1,6 +1,6 @@
-pid,group,finished,self_declaration,md_total_duration_s,kap_par_01,kap_par_02,kap_par_03,kap_par_04,kap_par_05,kap_par_06,kap_par_07,kap_par_08,kap_par_09,md_total_duration_s,finished
-P001,KG,T,"Yes, I confirm the data is usable",450,1.0,0.0,0.67,0.5,0.0,0.0,0.67,0.5,0.67,900,T
-P002,TG,T,"Yes, I confirm the data is usable",520,0.5,0.33,0.0,0.33,0.33,1.0,0.5,1.0,0.5,900,T
-P003,KG,T,"Yes, I confirm the data is usable",480,0.0,0.5,1.0,1.0,1.0,0.0,0.0,0.0,0.0,900,T
-P004,TG,T,"Yes, I confirm the data is usable",600,0.0,0.5,0.67,0.67,0.0,0.0,0.67,0.0,0.33,900,T
-P005,KG,T,"Yes, I confirm the data is usable",410,0.67,1.0,1.0,0.5,0.5,0.67,0.33,0.33,0.33,900,T
+pid,group,finished,self_declaration,md_total_duration_s,kap_par_01,kap_par_02,kap_par_03,kap_par_04,kap_par_05,kap_par_06,kap_par_07,kap_par_08,kap_par_09,finished
+P001,KG,T,"Yes, I confirm the data is usable",900,1.0,0.0,0.67,0.5,0.0,0.0,0.67,0.5,0.67,T
+P002,TG,T,"Yes, I confirm the data is usable",900,0.5,0.33,0.0,0.33,0.33,1.0,0.5,1.0,0.5,T
+P003,KG,T,"Yes, I confirm the data is usable",900,0.0,0.5,1.0,1.0,1.0,0.0,0.0,0.0,0.0,T
+P004,TG,T,"Yes, I confirm the data is usable",900,0.0,0.5,0.67,0.67,0.0,0.0,0.67,0.0,0.33,T
+P005,KG,T,"Yes, I confirm the data is usable",900,0.67,1.0,1.0,0.5,0.5,0.67,0.33,0.33,0.33,T
