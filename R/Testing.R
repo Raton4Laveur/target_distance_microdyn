@@ -37,5 +37,6 @@ stat_test <- data_analysis |>
 print(stat_test)
 
 ## 4. Wilcoxon effect size ----
-subject_data |>
+data_analysis |>
+  filter(type == "Manipulated") |>
   rstatix::wilcox_effsize(mean_score ~ group_name)
