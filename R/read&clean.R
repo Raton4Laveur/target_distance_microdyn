@@ -12,10 +12,12 @@ raw_data <- read.csv(here("data", "mock_data.csv"))
 ## 2. Cleaning Pipeline ----
 cleaned_data <- raw_data |>
   rename(group_name = group) |>
-  filter(finished == "T", 
-         self_declaration == "Yes, I confirm the data is usable") |>
-  group_by(group_name) |>
   filter(
+    as.character(finished) %in% c("T", "TRUE"), 
+    str_detect(self_declaration, "Yes")
+  ) |>
+    group_by(group_name) |>
+    filter(
     # Keep subjects within Mean +/- 2*SD
     md_total_duration_s <= (mean(md_total_duration_s, na.rm = TRUE) + 2 * sd(md_total_duration_s, na.rm = TRUE)),
     md_total_duration_s >= (mean(md_total_duration_s, na.rm = TRUE) - 2 * sd(md_total_duration_s, na.rm = TRUE))
