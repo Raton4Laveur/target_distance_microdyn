@@ -2,6 +2,7 @@
 library(tidyverse)
 library(here)
 library(rstatix)
+library(coin)
 
 ## 1. Import Data ----
 # Using here() ensures it works on any computer
