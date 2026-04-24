@@ -7,7 +7,7 @@ library(rstatix)
 # Using here() ensures it works on any computer
 raw_data <- readRDS(here("data", "expra_eg_b.rds"))
 ## Uncomment next line for mock data
-#raw_data <- readcsv(here("data", "mock_data.csv))
+#raw_data <- readcsv(here("data", "mock_data.csv"))
 
 ## 2. Cleaning Pipeline ----
 cleaned_data <- raw_data |>
