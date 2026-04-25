@@ -4,13 +4,12 @@ data_analysis |>
   t_test(mean_score ~ type, var.equal = FALSE) |>
   add_significance()
 
-# within subject; anchor vs manipulated
-stat_test_paired <- data_analysis |>
+# Wilcoxon-Test comparing Anchor vs Manipulated within groups
+data_analysis |>
   group_by(group_name) |>
   rstatix::wilcox_test(mean_score ~ type, paired = TRUE) |>
   add_significance()
 
-print(stat_test_paired)
 
 # Levene's Test (typeless)
 subject_data |>
@@ -23,13 +22,20 @@ data_analysis |>
   levene_test(mean_score ~ group_name) |>
   add_significance()
 
+
+
 # overall wilcoxon test (typeless)
-typeless_stat_test <- subject_data |>
-  rstatix::wilcox_test(mean_score ~ group_name) |> # Explicitly use rstatix
+subject_data |>
+  rstatix::wilcox_test(mean_score ~ group_name) |>
   add_significance()
 
-print(typeless_stat_test)
 
+#Anchor between KG & TG
+data_analysis |>
+  filter(type == "Anchor") |>
+  rstatix::wilcox_test(mean_score ~ group_name, alternative = "two.sided") |> 
+  add_significance()
+  
 
 # sanity check
 data_analysis |> group_by(group_name, type) |> count()
