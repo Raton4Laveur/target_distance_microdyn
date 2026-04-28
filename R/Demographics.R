@@ -1,4 +1,8 @@
 # 1. Setup ----
+
+library("cobalt")
+library("ggplot2")
+
 if (!dir.exists("plots")) dir.create("plots")
 
 GROUP_COLOURS <- c("#2E86AB", "#E84855")   # swap to your palette if needed

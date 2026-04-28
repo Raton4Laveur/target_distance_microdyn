@@ -1,3 +1,6 @@
+library("rstatix")
+library("coin")
+
 ## 1. Shapiro-Wilk test for every sub-group at once ----
 shapiro_test <- data_analysis |>
   group_by(group_name, type) |>

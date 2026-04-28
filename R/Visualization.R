@@ -1,3 +1,6 @@
+library("ggplot2")
+library("scales")
+
 if (!dir.exists("plots")) dir.create("plots")
 
 ## 1. Save Distribution Plot (Histogram) ----
