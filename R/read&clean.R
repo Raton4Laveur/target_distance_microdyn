@@ -1,14 +1,10 @@
-## 0. Load Libraries ----
-library(tidyverse)
-library(here)
-library(rstatix)
-library(coin)
+if (!dir.exists("output")) dir.create("output")
 
 ## 1. Import Data ----
 # Using here() ensures it works on any computer
-#raw_data <- readRDS(here("data", "expra_eg_b.rds"))
+raw_data <- readRDS(here("data", "expra_eg_b.rds"))
 ## Uncomment next line for mock data
-raw_data <- read.csv(here("data", "mock_data.csv"))
+#raw_data <- read.csv(here("data", "mock_data.csv"))
 
 ## 2. Cleaning Pipeline ----
 cleaned_data <- raw_data |>

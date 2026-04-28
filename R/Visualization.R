@@ -1,3 +1,5 @@
+if (!dir.exists("plots")) dir.create("plots")
+
 ## 1. Save Distribution Plot (Histogram) ----
 p1 <- ggplot(subject_data, aes(x = mean_score, fill = group_name)) +
   geom_histogram(aes(y = after_stat(density)), alpha = 0.5, bins = 15, position = "identity") +

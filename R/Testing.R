@@ -1,10 +1,12 @@
 ## 1. Shapiro-Wilk test for every sub-group at once ----
-data_analysis |>
+shapiro_test <- data_analysis |>
   group_by(group_name, type) |>
 # Only attempt the test if n >= 3 (mock data workaround)
   filter(n() >= 3) |>
   shapiro_test(mean_score) |>
   add_significance()
+
+print(shapiro_test)
 
 ## 2. KS-Test for Normality (Large Samples) ----
 ks_results <- data_analysis |>
@@ -29,14 +31,16 @@ print(ks_results)
 ## 3. Wilcoxon test between KG and TG (excluding Anchor)----
 stat_test <- data_analysis |>
   filter(type == "Manipulated") |>
-  #rstatix::wilcox_test(mean_score ~ group_name, alternative = "greater") |> # Explicitly use rstatix
+  rstatix::wilcox_test(mean_score ~ group_name, alternative = "greater") |> # Explicitly use rstatix
   ## uncomment next line for two-sided alternative (for github).
-  rstatix::wilcox_test(mean_score ~ group_name, alternative = "two.sided") |> 
+  #rstatix::wilcox_test(mean_score ~ group_name, alternative = "two.sided") |> 
   add_significance()
 
 print(stat_test)
 
 ## 4. Wilcoxon effect size ----
-data_analysis |>
+wilcox_effsize <- data_analysis |>
   filter(type == "Manipulated") |>
   rstatix::wilcox_effsize(mean_score ~ group_name)
+
+print(wilcox_effsize)
