@@ -1,4 +1,4 @@
-# ks-test showed: KG == ns ----
+# ks-test showed: EG-B == ns ----
 ## Levene's Test
 data_analysis |>
   filter(group_name == "EG-B") |>
