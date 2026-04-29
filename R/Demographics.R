@@ -2,6 +2,8 @@
 
 library("cobalt")
 library("ggplot2")
+library("rstatix")
+
 
 if (!dir.exists("plots")) dir.create("plots")
 
@@ -269,3 +271,30 @@ p_love <- smd_df |>
 print(p_love)
 ggsave(here("plots", "04_love_plot.pdf"), p_love,
        width = 22, height = 16, units = "cm", dpi = 300)
+
+
+## Quick Test for Age disparity significance ----
+
+
+demo_data |>
+  group_by(group_name) |>
+  summarise(
+    # The "Ties" Issue: By using jitter(), you tell R: 
+    # "Pretend these identical scores are actually 0.000001 apart." 
+    # This satisfies the mathematical requirement of the KS test.
+    ks_stat = ks.test(jitter(sd03_age), "pnorm", 
+                      mean = mean(sd03_age, na.rm = TRUE), 
+                      sd = sd(sd03_age, na.rm = TRUE))$statistic,
+    p_value = ks.test(jitter(sd03_age), "pnorm", 
+                      mean = mean(sd03_age, na.rm = TRUE), 
+                      sd = sd(sd03_age, na.rm = TRUE))$p.value,
+    .groups = "drop"
+  ) |>
+  add_significance("p_value")
+
+
+demo_data |>
+  rstatix::wilcox_test(sd03_age ~ group_name, alternative = "greater") |> # Explicitly use rstatix
+  ## uncomment next line for two-sided alternative (for github).
+  #rstatix::wilcox_test(mean_score ~ group_name, alternative = "two.sided") |> 
+  add_significance()

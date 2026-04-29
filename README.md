@@ -11,7 +11,6 @@ Project Title:
                 Does the distance between starting value and goal value influence the successfull knowledge application in MicroDYN-Systems?
 
 Installations:
-    This project uses the here library for better path compatibility.
 
     This project uses renv. To list the dependencies, use this command:
 
@@ -24,8 +23,9 @@ Installations:
 Execution Order:
     0.  open "ExPra_Aufgabenschwierigkeit.Rproj"
     1.  read&clean.R
-    2.  Visualizations.R
-    3.  Testing.R
+    2.  Demographics.R
+    3.  Visualizations.R
+    4.  Testing.R
     
 
 Data note:
