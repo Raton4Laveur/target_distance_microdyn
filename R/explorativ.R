@@ -11,16 +11,26 @@ data_analysis |>
   t_test(mean_score ~ type, var.equal = FALSE, paired = TRUE) |>
   add_significance()
 
+data_analysis |>
+  filter(group_name == "EG-B") |>
+  cohens_d(mean_score ~ type, var.equal = FALSE, paired = TRUE)
+
 # Wilcoxon-Test comparing Anchor vs Manipulated within groups
 data_analysis |>
   group_by(group_name) |>
   rstatix::wilcox_test(mean_score ~ type, paired = TRUE) |>
   add_significance()
 
+
+
 #Anchor between KG & TG ----
 data_analysis |>
   filter(type == "Anchor") |>
   rstatix::wilcox_test(mean_score ~ group_name, alternative = "two.sided") |> 
   add_significance()
+
+data_analysis |>
+  filter(type == "Anchor") |>
+  rstatix::wilcox_effsize(mean_score ~ group_name)
   
 

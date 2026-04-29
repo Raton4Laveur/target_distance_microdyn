@@ -4,7 +4,6 @@ library("cobalt")
 library("ggplot2")
 library("rstatix")
 
-
 if (!dir.exists("plots")) dir.create("plots")
 
 GROUP_COLOURS <- c("#2E86AB", "#E84855")   # swap to your palette if needed
@@ -90,7 +89,7 @@ p_age <- demo_data |>
   
   theme_apa() +
   labs(
-    title    = "Figure 1. Age Distribution by Group",
+    title    = "Age Distribution by Group",
     subtitle = "Violin = full distribution; box = IQR; diamond = mean",
     x = NULL, y = "Age (years)"
   )
@@ -137,7 +136,7 @@ p_grouped_bar <- cat_props |>
   theme_apa() +
   theme(legend.position = "bottom") +
   labs(
-    title    = "Figure 2. Categorical Demographic Breakdown by Group",
+    title    = "Categorical Demographic Breakdown by Group",
     subtitle = "Proportions within each group; bars are directly comparable between groups",
     x = "Proportion (%)", y = NULL
   )
@@ -177,7 +176,7 @@ p_edu_group <- edu_group_data |>
   theme_apa() +
   theme(legend.position = "right") +
   labs(
-    title    = "Figure 3. Educational Makeup by Group",
+    title    = "Educational Makeup by Group",
     subtitle = "Proportional breakdown; labels shown for segments ≥ 5%",
     x = NULL, y = "Proportion (%)"
   )
@@ -263,7 +262,7 @@ p_love <- smd_df |>
     panel.grid.major.x = element_blank()
   ) +
   labs(
-    title    = "Figure 4. Group Balance on Demographic Covariates",
+    title    = "Group Balance on Demographic Covariates",
     subtitle = "Standardised mean differences (SMD); dashed lines mark the |0.1| balance threshold",
     x = "Standardised Mean Difference", y = NULL
   )
@@ -298,3 +297,6 @@ demo_data |>
   ## uncomment next line for two-sided alternative (for github).
   #rstatix::wilcox_test(mean_score ~ group_name, alternative = "two.sided") |> 
   add_significance()
+
+demo_data |>
+  rstatix::wilcox_effsize(sd03_age ~ group_name)
