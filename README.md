@@ -1,36 +1,44 @@
-Project Title:
+# The Effect of Target Distance on Knowledge Application in MicroDYN Systems
 
-    "The Effect of Target Distance on Knowledge Application in MicroDYN Systems"
+## Research Question
 
-        Original:
-            Fragestellung: 
-                "Beeinflusst die Distanz zwischen Ausgangswert und Zielwert die erfolgreiche Wissensanwendung in MicroDYN-Systemen?""
+> Does the distance between starting value and goal value influence the successful knowledge application in MicroDYN systems?
 
-        Translation:
-            Research question:
-                Does the distance between starting value and goal value influence the successfull knowledge application in MicroDYN-Systems?
+---
 
-Installations:
+## Setup
 
-    This project uses renv. To list the dependencies, use this command:
+This project uses [`renv`](https://rstudio.github.io/renv/) for dependency management.
 
-        renv::dependencies()
+**List dependencies:**
+```r
+renv::dependencies()
+```
 
-    To recreate these installs on your own system, use this command:
+**Recreate the environment:**
+```r
+renv::restore()
+```
 
-        renv::restore()
+---
 
-Execution Order:
-    0.  open "ExPra_Aufgabenschwierigkeit.Rproj"
-    1.  read&clean.R
-    2.  Demographics.R
-    3.  Visualizations.R
-    4.  Testing.R
-    
+## Execution Order
 
-Data note:
-    The raw data is using the ".rds" format.
+> Start by opening `ExPra_Aufgabenschwierigkeit.Rproj`, then run the scripts in this order:
 
-    The raw data for this study (expra_eg_b.rds) is not publicly available due to [Privacy Institutional] restrictions.
-    
-    If you want to test this code, use the "mock_data.csv"
+| Step | Script |
+|------|--------|
+| 1 | `read&clean.R` |
+| 2 | `Demographics.R` |
+| 3 | `Visualizations.R` |
+| 4 | `Testing.R` |
+
+---
+
+## Data
+
+Raw data is stored in `.rds` format.
+
+> ⚠️ **The raw data file (`expra_eg_b.rds`) is not publicly available** due to privacy/institutional restrictions.
+
+To test this code, use the provided **`mock_data.csv`** instead.
