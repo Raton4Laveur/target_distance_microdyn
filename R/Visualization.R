@@ -4,7 +4,7 @@ library("scales")
 if (!dir.exists("plots")) dir.create("plots")
 
 ## 1. Save Distribution Plot (Histogram) ----
-p1 <- ggplot(subject_data, aes(x = mean_score, fill = group_name)) +
+p1 <- ggplot(analysis_data, aes(x = subject_overall_mean, fill = group_name)) +
   geom_histogram(aes(y = after_stat(density)), alpha = 0.5, bins = 15, position = "identity") +
   geom_density(alpha = 0.2) +
   facet_wrap(~group_name) + 
@@ -21,7 +21,7 @@ ggsave(here("plots", "distribution_plot.pdf"),
        width = 8, 
        height = 6)
 
-p2 <- ggplot(data_analysis, aes(x = mean_score, fill = group_name)) +
+p2 <- ggplot(analysis_data, aes(x = mean_score, fill = group_name)) +
   # We keep the fill by group, but facet by both group and type
   geom_histogram(aes(y = after_stat(density)), alpha = 0.6, bins = 15) +
   geom_density(alpha = 0.2) +
@@ -42,7 +42,7 @@ ggsave(here("plots", "seperate_distribution_plot.pdf"),
 
 
 ## 2. Save QQ-Plot (Diagnostic) ----
-p3 <- ggplot(data_analysis, aes(sample = mean_score, color = group_name)) +
+p3 <- ggplot(analysis_data, aes(sample = mean_score, color = group_name)) +
   # Adding 'geom_jitter' logic or reducing alpha helps see the density of ties
   stat_qq(alpha = 0.4) + 
   stat_qq_line() +
@@ -59,7 +59,7 @@ ggsave(here("plots", "qq_normality_check.png"),
        dpi = 300)
 
 ## 3. Save Final Comparison Plot (APA Standard) ----
-p4 <- ggplot(data_analysis, aes(x = type, y = mean_score, fill = group_name)) +
+p4 <- ggplot(analysis_data, aes(x = type, y = mean_score, fill = group_name)) +
   geom_boxplot(outlier.shape = NA, alpha = 0.7, width = 0.6, position = position_dodge(0.7)) +
   geom_point(position = position_jitterdodge(jitter.width = 0.1, dodge.width = 0.7),
              alpha = 0.3, size = 1, color = "black") +

@@ -2,7 +2,7 @@ library("rstatix")
 library("coin")
 
 ## 1. Shapiro-Wilk test for every sub-group at once ----
-shapiro_test <- data_analysis |>
+shapiro_test <- analysis_data |>
   group_by(group_name, type) |>
 # Only attempt the test if n >= 3 (mock data workaround)
   filter(n() >= 3) |>
@@ -12,7 +12,7 @@ shapiro_test <- data_analysis |>
 print(shapiro_test)
 
 ## 2. KS-Test for Normality (Large Samples) ----
-ks_results <- data_analysis |>
+ks_results <- analysis_data |>
   group_by(group_name, type) |>
   summarise(
     # The "Ties" Issue: By using jitter(), you tell R: 
@@ -32,7 +32,7 @@ print(ks_results)
 # The ks-test was not preregistered! --> footnote
 
 ## 3. Wilcoxon test between KG and TG (excluding Anchor)----
-stat_test <- data_analysis |>
+stat_test <- analysis_data |>
   filter(type == "Manipulated") |>
   rstatix::wilcox_test(mean_score ~ group_name, alternative = "greater") |> # Explicitly use rstatix
   ## uncomment next line for two-sided alternative (for github).
@@ -42,7 +42,7 @@ stat_test <- data_analysis |>
 print(stat_test)
 
 ## 4. Wilcoxon effect size ----
-wilcox_effsize <- data_analysis |>
+wilcox_effsize <- analysis_data |>
   filter(type == "Manipulated") |>
   rstatix::wilcox_effsize(mean_score ~ group_name)
 

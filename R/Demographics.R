@@ -103,43 +103,48 @@ ggsave(here("plots", "01_age_violin.pdf"), p_age,
 # One panel per variable; dodged bars show each group's proportion side-by-side.
 # Standard in journal methods sections — easy to read across all three variables.
 
-cat_props <- demo_data |>
+p_grouped_bar <- demo_data |>
+  # 1. Prepare and Pivot
   mutate(across(c(sd02_gender, sd04_ethnicity, sd05_education), as.character)) |>
-  pivot_longer(cols = c(sd02_gender, sd04_ethnicity, sd05_education),
-               names_to = "variable", values_to = "category") |>
+  pivot_longer(
+    cols = c(sd02_gender, sd04_ethnicity, sd05_education),
+    names_to = "variable", 
+    values_to = "category"
+  ) |>
+  # 2. Filter and Clean
   filter(!is.na(category), category != "Prefer not to say") |>
-  group_by(group_name, variable, category) |>
-  summarise(n = n(), .groups = "drop") |>
+  # 3. Calculate Proportions
+  count(group_name, variable, category) |> 
   group_by(group_name, variable) |>
   mutate(prop = n / sum(n)) |>
   ungroup() |>
+  # 4. Refactor Labels and Ordering
   mutate(
-    variable = recode(variable,
-                      sd02_gender    = "Gender",
-                      sd04_ethnicity = "Ethnicity",
-                      sd05_education = "Education"
+    variable = recode_values(variable,
+                             "sd02_gender"    ~ "Gender",
+                             "sd04_ethnicity" ~ "Ethnicity",
+                             "sd05_education" ~ "Education"
     ),
-    # Order categories by overall proportion so bars go largest → smallest
     category = fct_reorder(category, prop, .desc = FALSE)
-  )
-
-p_grouped_bar <- cat_props |>
+  ) |> 
+  # 5. Direct to Plotting
   ggplot(aes(x = prop, y = category, fill = group_name)) +
-  
   geom_col(position = position_dodge(width = 0.7), width = 0.6, alpha = 0.85) +
-  
   facet_wrap(~variable, scales = "free_y", ncol = 1) +
-  scale_x_continuous(labels = scales::percent_format(accuracy = 1),
-                     expand = expansion(mult = c(0, 0.05))) +
+  scale_x_continuous(
+    labels = scales::percent_format(accuracy = 1),
+    expand = expansion(mult = c(0, 0.05))
+  ) +
   scale_fill_manual(values = GROUP_COLOURS, name = "Group") +
-  
   theme_apa() +
   theme(legend.position = "bottom") +
   labs(
     title    = "Categorical Demographic Breakdown by Group",
     subtitle = "Proportions within each group; bars are directly comparable between groups",
-    x = "Proportion (%)", y = NULL
+    x = "Proportion (%)", 
+    y = NULL
   )
+
 
 print(p_grouped_bar)
 ggsave(here("plots", "02_grouped_bar.pdf"), p_grouped_bar,
@@ -150,40 +155,43 @@ ggsave(here("plots", "02_grouped_bar.pdf"), p_grouped_bar,
 # Two bars (one per group) showing the proportional education makeup.
 # Simple, uncluttered, and directly answers "do the groups differ in education?".
 
-edu_group_data <- demo_data |>
-  filter(!is.na(sd05_education)) |>
-  group_by(group_name, sd05_education) |>
-  summarise(n = n(), .groups = "drop") |>
-  group_by(group_name) |>
-  mutate(prop = n / sum(n)) |>
-  ungroup()
+(p_edu_group <- demo_data |>
+    # 1. Data Processing
+    filter(!is.na(sd05_education)) |>
+    count(group_name, sd05_education) |>
+    group_by(group_name) |>
+    mutate(prop = n / sum(n)) |>
+    ungroup() |>
+    
+    # 2. Plotting
+    ggplot(aes(x = group_name, y = prop, fill = sd05_education)) +
+    geom_col(position = "fill", width = 0.5, alpha = 0.9) +
+    geom_text(
+      aes(label = ifelse(prop >= 0.05, scales::percent(prop, accuracy = 1), "")),
+      position = position_fill(vjust = 0.5),
+      size = 3.2, colour = "white", fontface = "bold"
+    ) +
+    scale_y_continuous(labels = scales::percent_format()) +
+    scale_fill_viridis_d(
+      option = "plasma", 
+      name = "Education Level",
+      guide = guide_legend(reverse = TRUE)
+    ) +
+    coord_flip() +
+    theme_apa() +
+    theme(legend.position = "right") +
+    labs(
+      title    = "Educational Makeup by Group",
+      subtitle = "Proportional breakdown; labels shown for segments ≥ 5%",
+      x = NULL, y = "Proportion (%)"
+    ))
 
-p_edu_group <- edu_group_data |>
-  ggplot(aes(x = group_name, y = prop, fill = sd05_education)) +
-  
-  geom_col(position = "fill", width = 0.5, alpha = 0.9) +
-  geom_text(
-    aes(label = ifelse(prop >= 0.05, scales::percent(prop, accuracy = 1), "")),
-    position = position_fill(vjust = 0.5),
-    size = 3.2, colour = "white", fontface = "bold"
-  ) +
-  
-  scale_y_continuous(labels = scales::percent_format()) +
-  scale_fill_viridis_d(option = "plasma", name = "Education Level",
-                       guide = guide_legend(reverse = TRUE)) +
-  coord_flip() +
-  
-  theme_apa() +
-  theme(legend.position = "right") +
-  labs(
-    title    = "Educational Makeup by Group",
-    subtitle = "Proportional breakdown; labels shown for segments ≥ 5%",
-    x = NULL, y = "Proportion (%)"
-  )
-
-print(p_edu_group)
-ggsave(here("plots", "03_edu_group.pdf"), p_edu_group,
-       width = 22, height = 10, units = "cm", dpi = 300)
+# 3. Save
+ggsave(
+  here("plots", "03_edu_group.pdf"), 
+  p_edu_group,
+  width = 22, height = 10, units = "cm", dpi = 300
+)
 
 
 # ── Figure 4: Standardised Mean Differences — Love Plot ─────────────────────────
@@ -192,88 +200,81 @@ ggsave(here("plots", "03_edu_group.pdf"), p_edu_group,
 # balance; points beyond it flag variables that may need covariate adjustment.
 
 # cobalt::bal.tab() expects a binary treatment indicator (0/1)
-demo_bal <- demo_data |>
-  mutate(
-    treat         = as.integer(group_name) - 1L,   # first factor level → 0, second → 1
-    edu_numeric   = as.integer(sd05_education),    # ordered factor → ordinal integer
-    gender_female = as.integer(sd02_gender == "Female"),
-    # One-hot encode ethnicity (drop one level to avoid redundancy)
-    eth_white     = as.integer(sd04_ethnicity == "White"),
-    eth_black     = as.integer(sd04_ethnicity == "Black or African American"),
-    eth_hispanic  = as.integer(sd04_ethnicity == "Hispanic or Latino"),
-    eth_asian     = as.integer(sd04_ethnicity == "Asian"),
-    eth_other     = as.integer(sd04_ethnicity == "Other")
-  )
+## Figure 4: Standardised Mean Differences (Love Plot) - FIXED ----
+(p_love <- demo_data |>
+   # 1. Explicitly create binary flags for each ethnicity level
+   mutate(
+     treat         = as.integer(as.factor(group_name)) - 1L,
+     gender_female = as.integer(sd02_gender == "Female"),
+     edu_numeric   = as.integer(as.factor(sd05_education)),
+     # Create explicit binary columns for ethnicity
+     eth_white    = as.integer(sd04_ethnicity == "White"),
+     eth_black    = as.integer(sd04_ethnicity == "Black"),
+     eth_hispanic = as.integer(sd04_ethnicity == "Hispanic or Latino"),
+     eth_asian    = as.integer(sd04_ethnicity == "Asian"),
+     eth_other    = as.integer(sd04_ethnicity == "Other")
+   ) |>
+   # 2. Generate SMDs using cobalt
+   {\(d) cobalt::bal.tab(
+     treat ~ sd03_age + gender_female + edu_numeric + 
+       eth_white + eth_black + eth_hispanic + eth_asian + eth_other,
+     data = d, 
+     binary = "std", 
+     continuous = "std"
+   )$Balance}() |> 
+   
+   # 3. Clean and Relabel
+   rownames_to_column("variable") |>
+   filter(variable != "distance") |>
+   transmute(
+     smd = Diff.Un,
+     variable = case_match(variable,
+                           "sd03_age"      ~ "Age",
+                           "gender_female" ~ "Gender (Female)",
+                           "edu_numeric"   ~ "Education (ordinal)",
+                           "eth_white"     ~ "Ethnicity: White",
+                           "eth_black"     ~ "Ethnicity: Black",
+                           "eth_hispanic"  ~ "Ethnicity: Hispanic / Latino",
+                           "eth_asian"     ~ "Ethnicity: Asian",
+                           "eth_other"     ~ "Ethnicity: Other",
+                           .default = variable
+     ),
+     balanced = abs(smd) < 0.1,
+     variable = fct_reorder(variable, abs(smd))
+   ) |>
+   
+   # 4. Plotting
+   ggplot(aes(x = smd, y = variable, colour = balanced)) +
+   geom_vline(xintercept = 0, colour = "grey50", linewidth = 0.5) +
+   geom_vline(xintercept = c(-0.1, 0.1), colour = "grey60", linewidth = 0.4, linetype = "dashed") +
+   geom_segment(aes(x = 0, xend = smd, yend = variable), linewidth = 1.5, alpha = 0.6) +
+   geom_point(size = 3.5) +
+   scale_colour_manual(
+     values = c("TRUE" = "#2E86AB", "FALSE" = "#E84855"),
+     labels = c("TRUE" = "Balanced (|SMD| < 0.1)", "FALSE" = "Imbalanced (|SMD| ≥ 0.1)"),
+     name   = NULL,
+     drop   = FALSE # Ensures the legend shows both even if all are balanced
+   ) +
+   # Centering the plot around 0
+   coord_cartesian(xlim = c(-0.15, 0.15)) + 
+   theme_apa() +
+   theme(
+     legend.position   = "bottom",
+     panel.grid.major.y = element_line(colour = "grey92"),
+     panel.grid.major.x = element_blank()
+   ) +
+   labs(
+     title    = "Group Balance on Demographic Covariates",
+     subtitle = "Standardised mean differences (SMD); dashed lines mark the |0.1| balance threshold",
+     x = "Standardised Mean Difference", y = NULL
+   ))
 
-bal <- bal.tab(
-  treat ~ sd03_age + gender_female + edu_numeric +
-    eth_white + eth_black + eth_hispanic + eth_asian + eth_other,
-  data      = demo_bal,
-  binary    = "std",   # standardise binary vars the same way as continuous
-  continuous = "std"
-)
-
-# Extract SMD table and give variables readable labels
-smd_df <- bal$Balance |>
-  rownames_to_column("variable") |>
-  filter(variable != "distance") |>
-  transmute(
-    variable = recode(variable,
-                      sd03_age       = "Age",
-                      gender_female  = "Gender (Female)",
-                      edu_numeric    = "Education (ordinal)",
-                      eth_white      = "Ethnicity: White",
-                      eth_black      = "Ethnicity: Black / African American",
-                      eth_hispanic   = "Ethnicity: Hispanic / Latino",
-                      eth_asian      = "Ethnicity: Asian",
-                      eth_other      = "Ethnicity: Other"
-    ),
-    smd = Diff.Un   # unadjusted SMD
-  ) |>
-  mutate(
-    balanced  = abs(smd) < 0.1,
-    variable  = fct_reorder(variable, abs(smd))
-  )
-
-p_love <- smd_df |>
-  ggplot(aes(x = smd, y = variable, colour = balanced)) +
-  
-  # Reference lines
-  geom_vline(xintercept = 0,    colour = "grey50", linewidth = 0.5) +
-  geom_vline(xintercept =  0.1, colour = "grey60", linewidth = 0.4, linetype = "dashed") +
-  geom_vline(xintercept = -0.1, colour = "grey60", linewidth = 0.4, linetype = "dashed") +
-  
-  # Horizontal whisker from 0 to the point
-  geom_segment(aes(x = 0, xend = smd, yend = variable), linewidth = 1.5, alpha = 0.6) +
-  geom_point(size = 3.5) +
-  
-  scale_colour_manual(
-    values = c("TRUE" = "#2E86AB", "FALSE" = "#E84855"),
-    labels = c("TRUE" = "Balanced (|SMD| < 0.1)", "FALSE" = "Imbalanced (|SMD| ≥ 0.1)"),
-    name   = NULL
-  ) +
-  scale_x_continuous(breaks = seq(-0.4, 0.4, by = 0.1),
-                     labels = function(x) sprintf("%.1f", x)) +
-  
-  theme_apa() +
-  theme(
-    legend.position  = "bottom",
-    panel.grid.major.y = element_line(colour = "grey92"),  # horizontal guides aid reading
-    panel.grid.major.x = element_blank()
-  ) +
-  labs(
-    title    = "Group Balance on Demographic Covariates",
-    subtitle = "Standardised mean differences (SMD); dashed lines mark the |0.1| balance threshold",
-    x = "Standardised Mean Difference", y = NULL
-  )
-
-print(p_love)
-ggsave(here("plots", "04_love_plot.pdf"), p_love,
+# 5. Save
+ggsave(here("plots", "04_love_plot.pdf"), p_love, 
        width = 22, height = 16, units = "cm", dpi = 300)
 
 
 ## Quick Test for Age disparity significance ----
-
 
 demo_data |>
   group_by(group_name) |>
