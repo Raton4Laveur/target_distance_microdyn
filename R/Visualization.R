@@ -39,7 +39,7 @@ theme_set(theme_apa())
    scale_color_apa() +
    theme(
       strip.background = element_rect(fill = "grey95", colour = "grey30"),
-      legend.position = "none" # Da die Gruppen-Namen schon in den Facets stehen
+      legend.position = "none"
     ) +
    labs(title = "QQ-Plots: Normality Check per Condition")
 )
