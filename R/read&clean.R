@@ -1,3 +1,4 @@
+{
 library("here")
 library("dplyr")
 library("tidyr")
@@ -6,15 +7,15 @@ library("forcats")
 library("tibble")
 
 if (!dir.exists("output")) dir.create("output")
+}
 
 ## 1. Import Data ----
-# Using here() ensures it works on any computer
-raw_data <- readRDS(here("data", "expra_eg_b.rds"))
+data_raw <- readRDS(here("data", "expra_eg_b.rds"))
 ## Uncomment next line for mock data
 #raw_data <- read.csv(here("data", "mock_data.csv"))
 
 ## 2. Cleaning Pipeline ----
-cleaned_data <- raw_data |>
+data_clean <- data_raw |>
   rename(group_name = group) |>
   filter(
     as.character(finished) %in% c("T", "TRUE"), 
@@ -29,7 +30,7 @@ cleaned_data <- raw_data |>
   ungroup()
 
 ## 3. Pivot to Long Format ----
-analysis_data <- cleaned_data |>
+data_analysis <- data_clean |>
   select(pid, group_name, starts_with("kap_par_")) |>
   pivot_longer(
     cols = starts_with("kap_par_"),
@@ -45,11 +46,54 @@ analysis_data <- cleaned_data |>
 
 ## 4. Unified Analysis Data (Replacing workaround) ----
 # Calculate the overall mean per subject and join it back to the data_analysis
-analysis_data <- analysis_data |>
+data_analysis <- data_analysis |>
   group_by(pid) |>
   mutate(subject_overall_mean = mean(mean_score, na.rm = TRUE)) |>
   ungroup()
 
-## 5. Save Clean Data ----
-# You now only need one file for all subsequent analysis
-saveRDS(analysis_data, here("output", "data_analysis_cleaned.rds"))
+## 5. APA Theme ----
+theme_apa <- function(base_size = 11, base_family = "serif") {
+  
+  apa_colors <- c("#000000", "#999999")
+  options(apa_plot_colors = apa_colors)
+  
+  theme_classic(base_size = base_size, base_family = base_family) +
+    theme(
+      text               = element_text(family = "serif", size = base_size),
+      
+      plot.title         = element_blank(),
+      plot.subtitle      = element_blank(),
+      
+      axis.line          = element_line(colour = "black", linewidth = 0.5),
+      axis.ticks         = element_line(colour = "black", linewidth = 0.5),
+      axis.title         = element_text(face = "plain"), # HIER KORRIGIERT: "plain" statt "regular"
+      axis.text          = element_text(family = "sans", colour = "black", size = base_size - 1),
+      
+      strip.background   = element_blank(),
+      strip.text         = element_text(face = "bold", size = rel(1)),
+      
+      legend.position    = "bottom",
+      legend.justification = "left",
+      legend.title       = element_text(face = "bold", size = base_size - 1),
+      legend.text        = element_text(size = base_size - 1),
+      legend.background  = element_blank(),
+      legend.key         = element_blank(),
+      
+      panel.grid.major.y = element_blank(),
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor.y = element_blank(),
+      panel.grid.minor.x = element_blank()
+    )
+}
+# Helper functions for colors
+scale_fill_apa <- function(...) {
+  cols <- getOption("apa_plot_colors")
+  scale_fill_manual(values = cols, ...)
+}
+scale_color_apa <- function(...) {
+  cols <- getOption("apa_plot_colors")
+  scale_color_manual(values = cols, ...)
+}
+
+## 6. Save Clean Data ----
+saveRDS(data_analysis, here("output", "data_analysis_cleaned.rds"))

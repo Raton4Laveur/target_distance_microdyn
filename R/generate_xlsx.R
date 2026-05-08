@@ -1,17 +1,16 @@
 # ── APA 7 Descriptive Statistics Table → Excel ────────────────────────────────
-# Packages: openxlsx, dplyr, tidyr
-# Output:   output/descriptive_stats_apa.xlsx
-# ──────────────────────────────────────────────────────────────────────────────
+{
+  library(openxlsx)
+  library(dplyr)
+  library(tidyr)
+  library(here)
+  
+  if (!dir.exists("output")) dir.create("output")
+}
 
-library(openxlsx)
-library(dplyr)
-library(tidyr)
-library(here)
-
-if (!dir.exists("output")) dir.create("output")
 
 # 1. Compute Statistics (The only object left in your Environment)
-desc_stats <- analysis_data |>
+xlsx_output <- data_analysis |>
   group_by(group_name, type) |>
   summarise(
     n        = sum(!is.na(mean_score)),
@@ -42,7 +41,7 @@ desc_stats <- analysis_data |>
          `95% CI Lower` = CI_lower, `95% CI Upper` = CI_upper)
 
 # 2. The "Clean Room" Function (Executes and disappears)
-save_apa_excel <- function(df, filename = "descriptive_stats_apa.xlsx") {
+save_apa_excel <- function(df, filename = "descriptive_stats.xlsx") {
   wb <- createWorkbook()
   addWorksheet(wb, "Descriptive Statistics")
   
@@ -83,4 +82,4 @@ save_apa_excel <- function(df, filename = "descriptive_stats_apa.xlsx") {
 }
 
 # 3. Execute
-save_apa_excel(desc_stats)
+save_apa_excel(xlsx_output)
