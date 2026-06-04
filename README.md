@@ -24,7 +24,7 @@ renv::restore()
 
 ## Execution Order
 
-> Zu beginn bitte das Projekt öffnen `ExPra_Aufgabenschwierigkeit.Rproj`, dann die Scripts in dieser Reihenfolge ausführen:
+> Zu Beginn bitte das Projekt öffnen: `ExPra_Aufgabenschwierigkeit.Rproj`, dann die Scripts in dieser Reihenfolge ausführen:
 
 | Step | Script |
 |------|--------|
@@ -35,7 +35,7 @@ renv::restore()
 | 5 | `explorativ.R` |
 | 6 | `generate_xlsx.R` |
 
-> Alternativ kann man einfach `Admin.R` laufen lassen
+> Alternativ kann man einfach `Admin.R` laufen lassen.
 
 ---
 
