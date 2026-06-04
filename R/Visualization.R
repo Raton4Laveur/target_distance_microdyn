@@ -45,7 +45,7 @@ theme_set(theme_apa())
       strip.background = element_rect(fill = "grey95", colour = "grey30"),
       legend.position = "none"
     ) +
-   labs(title = "QQ-Plots: Prüfung auf Normalverteilung je Bedingung",
+   labs(title = "QQ-Plot",
         x = "Theoretische Quantile",
         y = "Beobachtete Quantile")
 )
@@ -77,7 +77,7 @@ ggsave(here("plots", "01_Verteilungsplot.pdf"),
        height = 6
        )
 # Plot 2
-ggsave(here("plots", "XX_Verteilung nach Gruppe.pdf"), 
+ggsave(here("plots", "XX_Verteilung_nach_Gruppe.pdf"), 
        plot = p2, 
        width = 8, 
        height = 6
