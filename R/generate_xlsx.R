@@ -13,32 +13,32 @@
 xlsx_output <- data_analysis |>
   group_by(group_name, type) |>
   summarise(
-    n        = sum(!is.na(mean_score)),
-    Mean     = mean(mean_score,   na.rm = TRUE),
-    Median   = median(mean_score, na.rm = TRUE),
-    SD       = sd(mean_score,     na.rm = TRUE),
-    Variance = var(mean_score,    na.rm = TRUE),
-    IQR      = IQR(mean_score,    na.rm = TRUE),
-    Min      = min(mean_score,    na.rm = TRUE),
-    Max      = max(mean_score,    na.rm = TRUE),
-    Skewness = {
+    n           = sum(!is.na(mean_score)),
+    Mittelwert  = mean(mean_score,   na.rm = TRUE),
+    Median      = median(mean_score, na.rm = TRUE),
+    SD          = sd(mean_score,     na.rm = TRUE),
+    Varianz     = var(mean_score,    na.rm = TRUE),
+    IQR         = IQR(mean_score,    na.rm = TRUE),
+    Min         = min(mean_score,    na.rm = TRUE),
+    Max         = max(mean_score,    na.rm = TRUE),
+    Schiefe = {
       x  <- mean_score[!is.na(mean_score)]
       m3 <- mean((x - mean(x))^3); m2 <- mean((x - mean(x))^2)
       m3 / m2^1.5
     },
-    Kurtosis = {
+    Exzess = {
       x  <- mean_score[!is.na(mean_score)]
       m4 <- mean((x - mean(x))^4); m2 <- mean((x - mean(x))^2)
       (m4 / m2^2) - 3
     },
     SE       = SD / sqrt(n),
-    CI_lower = Mean - qt(0.975, df = n - 1) * SE,
-    CI_upper = Mean + qt(0.975, df = n - 1) * SE,
+    unteres_KI = Mittelwert - qt(0.975, df = n - 1) * SE,
+    oberes_KI = Mittelwert + qt(0.975, df = n - 1) * SE,
     .groups  = "drop"
   ) |>
   mutate(across(where(is.numeric), \(x) round(x, 2))) |>
-  rename(Group = group_name, Type = type, `SE (Mean)` = SE, 
-         `95% CI Lower` = CI_lower, `95% CI Upper` = CI_upper)
+  rename(Gruppe = group_name, Aufgabentyp = type, `SEM` = SE, 
+         `95% unteres_KI` = unteres_KI, `95% oberes_KI` = oberes_KI)
 
 # 2. The "Clean Room" Function (Executes and disappears)
 save_apa_excel <- function(df, filename = "Deskriptivstatistik.xlsx") {
@@ -58,10 +58,6 @@ save_apa_excel <- function(df, filename = "Deskriptivstatistik.xlsx") {
   s_bottom <- createStyle(fontName = FONT, border = "bottom")
   
   # Writing
-  writeData(wb, ws, "Tabelle 1", startRow = 1)
-  addStyle(wb, ws, s_title, rows = 1, cols = 1)
-  writeData(wb, ws, "Deskriptivstatistik der Mittelwerte", startRow = 2)
-  addStyle(wb, ws, s_note, rows = 2, cols = 1)
   
   writeData(wb, ws, df, startRow = 3, colNames = TRUE)
   addStyle(wb, ws, s_header, rows = 3, cols = 1:n_cols)
@@ -70,7 +66,7 @@ save_apa_excel <- function(df, filename = "Deskriptivstatistik.xlsx") {
   addStyle(wb, ws, s_bottom, rows = DATA_END, cols = 1:n_cols, stack = TRUE)
   
   # Footer Note
-  writeData(wb, ws, "Anmerkung. n = Stichprobengrösse; SD = Standardabweichung; Skew/Kurt = Exzess.", startRow = DATA_END + 2)
+  writeData(wb, ws, "Anmerkung: n = Stichprobengrösse; SD = Standardabweichung; IQR = Interquartilbereich; SEM = Standardfehler des Mittelwerts", startRow = DATA_END + 2)
   addStyle(wb, ws, s_note, rows = DATA_END + 2, cols = 1)
   
   # Formatting
