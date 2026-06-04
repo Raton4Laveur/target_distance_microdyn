@@ -37,38 +37,38 @@ results_explorative <- list(
       rstatix::wilcox_effsize(sd03_age ~ group_name)
     ,
   
-  "paired-T-test_Anchor-Manipulated_EG-B" =
+  "paired-T-test_EG-B" =
     # Paired T-test comparing Anchor vs Manipulated within EG-B
     data_analysis |>
       filter(group_name == "TG") |>
       t_test(mean_score ~ type, paired = TRUE, alternative = "two.sided") |>
       add_significance()
     ,
-  "Cohens-d_Anchor-Manipulated_EG-B" =
+  "Cohens-d_EG-B" =
     data_analysis |>
       filter(group_name == "TG") |>
       cohens_d(mean_score ~ type, paired = TRUE)
     ,
-  "Signed-wilcoxon-test_Anchor-Manipulated_KG" =
+  "Signed-wilcoxon-test_KG" =
     # Wilcoxon-Test comparing Anchor vs Manipulated within KG
     data_analysis |>
       filter(group_name == "KG") |>
       rstatix::wilcox_test(mean_score ~ type, paired = TRUE, alternative = "two.sided") |>
       add_significance()
     ,
-  "Wilcoxon-effectsize_Anchor-Manipulated_KG" =
+  "Wilcoxon-effectsize_KG" =
     data_analysis |>
       filter(group_name == "KG") |>
       rstatix::wilcox_effsize(mean_score ~ type, paired = TRUE, alternative = "two.sided")
     ,
-  "Wilcoxon-test_Anchor_between_groups" =
+  "Wilcoxon-test_Anchor" =
     #Anchor between KG & TG ----
     data_analysis |>
       filter(type == "Anker") |>
       rstatix::wilcox_test(mean_score ~ group_name, alternative = "two.sided") |> 
       add_significance()
     ,
-  "Wilcoxon-effectsize_Anchor_between_groups" =
+  "Wilcoxon-effectsize_Anchor" =
     data_analysis |>
       filter(type == "Anker") |>
       rstatix::wilcox_effsize(mean_score ~ group_name)
