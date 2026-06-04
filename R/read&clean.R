@@ -40,6 +40,15 @@ data_analysis <- data_clean |>
   drop_na(score) |>
   mutate(type = if_else(question %in% c("kap_par_01", "kap_par_02", "kap_par_08"), 
                         "Anchor", "Manipulated")) |>
+  mutate(type = case_when(
+    type == "Anchor" ~ "Kontrollfragen (Anker)",
+    type == "Manipulated" ~ "Manipuliert",
+    TRUE ~ as.character(type)
+  )) |>
+  mutate(group_name = case_when(
+    group_name == "EG-B" ~ "TG",
+    TRUE ~ as.character(group_name)
+  )) |>
   # Initial aggregation by type
   group_by(pid, group_name, type) |> 
   summarize(mean_score = mean(score), .groups = "drop")

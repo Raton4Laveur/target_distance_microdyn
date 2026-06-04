@@ -37,7 +37,7 @@ results_testing <- list(
     
     ## 3. Wilcoxon test between KG and TG (excluding Anchor)----
     data_analysis |>
-      filter(type == "Manipulated") |>
+      filter(type == "Manipuliert") |>
       rstatix::wilcox_test(mean_score ~ group_name, alternative = "greater") |> # Explicitly use rstatix
       ## uncomment next line for two-sided alternative (for github).
       #rstatix::wilcox_test(mean_score ~ group_name, alternative = "two.sided") |> 
@@ -46,7 +46,7 @@ results_testing <- list(
   "Wilcoxon_effectsize-main" =
     ## 4. Wilcoxon effect size ----
     data_analysis |>
-      filter(type == "Manipulated") |>
+      filter(type == "Manipuliert") |>
       rstatix::wilcox_effsize(mean_score ~ group_name)
 )
 print(results_testing)

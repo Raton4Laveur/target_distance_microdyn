@@ -1,21 +1,21 @@
-# The Effect of Target Distance on Knowledge Application in MicroDYN Systems
+# Der Einfluss der Zielentfernung auf die Wissensanwendung in MicroDYN-Systemen
 
-## Research Question
+## Fragestellung
 
-> Does the distance between starting value and goal value influence the successful knowledge application in MicroDYN systems?
+> Beeinflusst die Distanz zwischen Ausgangs- und Zielwert erfolgreiche Wissensanwendung in MicroDYN-Systemen?
 
 ---
 
 ## Setup
 
-This project uses [`renv`](https://rstudio.github.io/renv/) for dependency management.
+Dieses Projekt benutzt [`renv`](https://rstudio.github.io/renv/) für dependency management.
 
-**List dependencies:**
+**Um die Dependencies anzeigen:**
 ```r
 renv::dependencies()
 ```
 
-**Recreate the environment:**
+**Um die R-Umgebung wiederherzustellen:**
 ```r
 renv::restore()
 ```
@@ -24,7 +24,7 @@ renv::restore()
 
 ## Execution Order
 
-> Start by opening `ExPra_Aufgabenschwierigkeit.Rproj`, then run the scripts in this order:
+> Zu beginn bitte das Projekt öffnen `ExPra_Aufgabenschwierigkeit.Rproj`, dann die Scripts in dieser Reihenfolge ausführen:
 
 | Step | Script |
 |------|--------|
@@ -35,14 +35,14 @@ renv::restore()
 | 5 | `explorativ.R` |
 | 6 | `generate_xlsx.R` |
 
-> Alternatively, you can just run `ADMIN.R` to execute the whole pipeline as seen above
+> Alternativ kann man einfach `Admin.R` laufen lassen
 
 ---
 
 ## Data
 
-Raw data is stored in `.rds` format.
+Die Rohdaten sind im `.rds` Format gespeichert.
 
-> ⚠️ **The raw data file (`expra_eg_b.rds`) is not publicly available** due to privacy/institutional restrictions.
+> ⚠️ **Die Rohdaten (`expra_eg_b.rds`) sind nicht öffentlich erhältlich** aufgrund von Datenschutzrichtlinien.
 
-To test this code, use the provided **`mock_data.csv`** instead.
+Um den Code zu testen, bitte **`mock_data.csv`** benutzen.

@@ -48,6 +48,10 @@ data_demo <- data_clean |>
                               "Abitur / Obligatorische Schulzeit", "Studium ohne Abschluss", "Berufsakademie / FH", "Bachelor", "Master / Promotion"
                             ), ordered = TRUE)
   ) |>
+  mutate(group_name = case_when(
+    group_name == "EG-B" ~ "TG",
+    TRUE ~ as.character(group_name)
+  )) |>
   # Exclude "Prefer not to say" from gender, ethnicity, and education globally
   filter(
     !is.na(sd02_gender),  !is.na(sd04_ethnicity), !is.na(sd03_age),
@@ -55,6 +59,7 @@ data_demo <- data_clean |>
     sd04_ethnicity != "Prefer not to say",
     !is.na(sd05_education)   # NAs are the recoded "Prefer not to say" rows
   )
+
 
 
 # ── Figure 1: Age by Group — Violin + Boxplot + Mean ──────────────────────────
@@ -87,9 +92,10 @@ data_demo <- data_clean |>
 
   # Übersetzung der ethnischen Kategorien im Datensatz für den Plot
   mutate(sd04_ethnicity = case_when(
-    sd04_ethnicity == "White" ~ "Weiß",
+    sd04_ethnicity == "White" ~ "Weiss",
     sd04_ethnicity == "Black" ~ "Schwarz / Afroamerikanisch",
     sd04_ethnicity == "Hispanic or Latino" ~ "Hispanic / Latino",
+    sd04_ethnicity == "Native American or Alaskan Native" ~ "Indigene Amerikaner oder Ureinwohner Alaskas",
     sd04_ethnicity == "Asian" ~ "Asiatisch",
     sd04_ethnicity == "Other" ~ "Andere",
     TRUE ~ sd04_ethnicity
@@ -221,12 +227,11 @@ data_demo <- data_clean |>
                            "eth_asian"     ~ "Ethnie: Asiatisch",
                            "eth_other"     ~ "Ethnie: Andere",
      ),
-     balanced = abs(smd) < 0.1,
      variable = fct_reorder(variable, abs(smd))
    ) |>
    
    # 4. Plotting
-   ggplot(aes(x = smd, y = variable, colour = balanced)) +
+   ggplot(aes(x = smd, y = variable)) +
    geom_vline(xintercept = 0, colour = "black", linewidth = 0.5) +
    geom_vline(xintercept = c(-0.1, 0.1), colour = "grey70", linewidth = 0.4, linetype = "dashed") +
    geom_segment(aes(x = 0, xend = smd, yend = variable), linewidth = 2, alpha = 0.5) +

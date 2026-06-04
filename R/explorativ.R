@@ -40,13 +40,13 @@ results_explorative <- list(
   "paired-T-test_Anchor-Manipulated_EG-B" =
     # Paired T-test comparing Anchor vs Manipulated within EG-B
     data_analysis |>
-      filter(group_name == "EG-B") |>
+      filter(group_name == "TG") |>
       t_test(mean_score ~ type, paired = TRUE, alternative = "two.sided") |>
       add_significance()
     ,
   "Cohens-d_Anchor-Manipulated_EG-B" =
     data_analysis |>
-      filter(group_name == "EG-B") |>
+      filter(group_name == "TG") |>
       cohens_d(mean_score ~ type, paired = TRUE)
     ,
   "Signed-wilcoxon-test_Anchor-Manipulated_KG" =
@@ -64,13 +64,13 @@ results_explorative <- list(
   "Wilcoxon-test_Anchor_between_groups" =
     #Anchor between KG & TG ----
     data_analysis |>
-      filter(type == "Anchor") |>
+      filter(type == "Kontrollfragen (Anker)") |>
       rstatix::wilcox_test(mean_score ~ group_name, alternative = "two.sided") |> 
       add_significance()
     ,
   "Wilcoxon-effectsize_Anchor_between_groups" =
     data_analysis |>
-      filter(type == "Anchor") |>
+      filter(type == "Kontrollfragen (Anker)") |>
       rstatix::wilcox_effsize(mean_score ~ group_name)
 )
 print(results_explorative)
