@@ -1,6 +1,151 @@
-pid,group,finished,self_declaration,md_total_duration_s,kap_par_01,kap_par_02,kap_par_03,kap_par_04,kap_par_05,kap_par_06,kap_par_07,kap_par_08,kap_par_09
-P001,KG,T,"Yes, I confirm the data is usable",900,1.0,0.0,0.67,0.5,0.0,0.0,0.67,0.5,0.67
-P002,TG,T,"Yes, I confirm the data is usable",900,0.5,0.33,0.0,0.33,0.33,1.0,0.5,1.0,0.5
-P003,KG,T,"Yes, I confirm the data is usable",900,0.0,0.5,1.0,1.0,1.0,0.0,0.0,0.0,0.0
-P004,TG,T,"Yes, I confirm the data is usable",900,0.0,0.5,0.67,0.67,0.0,0.0,0.67,0.0,0.33
-P005,KG,T,"Yes, I confirm the data is usable",900,0.67,1.0,1.0,0.5,0.5,0.67,0.33,0.33,0.33
+"pid","group","finished","self_declaration","md_total_duration_s","sd02_gender","sd03_age","sd04_ethnicity","sd05_education","kap_par_01","kap_par_02","kap_par_03","kap_par_04","kap_par_05","kap_par_06","kap_par_07","kap_par_08","kap_par_09","kap_par_10"
+1,"EG-B","TRUE","Yes",658,"Female",8,"Hispanic or Latino","Bachelor's degree (BA, BS)",3.94,3.46,2.5,1.6,4.31,4.96,4.28,2.66,1.84,1.47
+2,"EG-B","TRUE","Yes",677,"Female",36,"Asian","Associate's degree (AA, AS)",4.01,1.2,4.54,1.39,2.88,2.75,3.63,4.38,3.68,1.99
+3,"KG","TRUE","Yes",646,"Male",6,"Black","1 or more years of college credit, no degree",2.33,3.61,3.28,3.85,1.69,3.8,2.75,4.42,2.81,2.02
+4,"EG-B","TRUE","Yes",511,"Male",10,"White","Regular high school diploma",1.23,2.29,2.88,2.82,4.93,4.56,1.55,2.81,2.71,1.03
+5,"EG-B","TRUE","Yes",490,"Female",27,"Asian","1 or more years of college credit, no degree",3.7,1.63,3.54,2.6,2.61,4.34,1.08,3.93,3.26,4.45
+6,"KG","TRUE","Yes",751,"Female",20,"Asian","Regular high school diploma",1.17,1.85,3.96,3.46,4.06,3.94,3.83,3.7,1.19,2.64
+7,"EG-B","TRUE","Yes",626,"Female",25,"White","1 or more years of college credit, no degree",3.57,2.49,1.58,1.53,1.37,3.59,1.39,4,3.63,3.78
+8,"KG","TRUE","Yes",609,"Male",24,"Other","Bachelor's degree (BA, BS)",2.2,3.69,2.63,1.32,4.58,4.37,1.34,4.84,3.81,2.28
+9,"EG-B","TRUE","Yes",588,"Male",16,"Black","Bachelor's degree (BA, BS)",2.57,1.63,2.83,3.65,4.2,1.64,1.78,4.98,3.95,2.78
+10,"EG-B","TRUE","Yes",481,"Male",44,"Black","Regular high school diploma",4.69,2.62,3.23,4.17,3.52,2.45,4.94,4.92,3.22,4.23
+11,"KG","TRUE","Yes",661,"Female",16,"Other","1 or more years of college credit, no degree",3.72,2.05,2.64,2.49,3.54,2.1,3.66,3.26,1.26,2.83
+12,"EG-B","TRUE","Yes",578,"Female",51,"Black","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",3.87,2.4,4.99,4.2,4.61,1.5,4.95,4.66,3.29,2.36
+13,"EG-B","TRUE","Yes",582,"Male",3,"Asian","Regular high school diploma",3.87,1.45,4,4.24,4.28,3.26,2.55,4.89,3.01,4.1
+14,"KG","TRUE","Yes",693,"Female",32,"Hispanic or Latino","Regular high school diploma",1.91,2.17,1.75,4.46,3,3.69,4.26,4.85,2.82,4.9
+15,"KG","TRUE","Yes",682,"Female",21,"Black","1 or more years of college credit, no degree",2.64,1.53,1.43,2.69,3.91,1.01,2.08,3.4,3.8,2.65
+16,"EG-B","TRUE","Yes",739,"Male",39,"Black","Bachelor's degree (BA, BS)",3.28,2.83,3.98,1.38,4.12,4.2,2.91,1.78,2.63,3.71
+17,"EG-B","TRUE","Yes",552,"Female",3,"Black","Regular high school diploma",4.52,3.94,1.46,4.53,2.09,1.79,1.8,1.29,4.63,3.12
+18,"KG","TRUE","Yes",665,"Female",10,"Black","Associate's degree (AA, AS)",3.38,1.22,4.99,2.15,3.86,3.67,3.98,2.63,1.93,1.51
+19,"KG","TRUE","Yes",739,"Female",21,"White","Regular high school diploma",4.67,2.57,4.11,2.22,3.29,4.15,3.24,1.05,2.82,1.2
+20,"KG","TRUE","Yes",489,"Male",42,"Hispanic or Latino","Bachelor's degree (BA, BS)",2.41,4.37,2.63,4.26,4.57,4.81,1.86,4.96,4.16,1.15
+21,"EG-B","TRUE","Yes",514,"Female",7,"Asian","Regular high school diploma",2.02,2.59,2.11,3.35,1.11,2.53,1.79,3.97,4.78,4.85
+22,"KG","TRUE","Yes",487,"Female",19,"Hispanic or Latino","Associate's degree (AA, AS)",3.86,2.83,4.83,3.65,3.72,3.11,1.23,4.22,4.11,2.39
+23,"EG-B","TRUE","Yes",454,"Male",29,"Black","Bachelor's degree (BA, BS)",1.87,4.83,2.02,3.58,3.77,2.55,2.38,1.64,2.56,4.11
+24,"EG-B","TRUE","Yes",608,"Male",45,"Other","Associate's degree (AA, AS)",2.77,4.1,1.48,1.91,3.28,1.53,3.49,4.27,4.42,1.89
+25,"KG","TRUE","Yes",665,"Female",42,"Asian","Regular high school diploma",3.78,2.91,3.18,3.44,4.33,4.23,1.69,3.07,2.92,4.19
+26,"KG","TRUE","Yes",720,"Female",46,"Hispanic or Latino","Bachelor's degree (BA, BS)",3.69,4.94,3.69,2.95,2.18,3.74,1.02,4.58,1.59,2.41
+27,"KG","TRUE","Yes",704,"Male",24,"Other","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",1.72,2.18,2.5,3.32,1.76,2.17,1.33,4.85,3.25,1.11
+28,"EG-B","TRUE","Yes",500,"Male",29,"Black","Bachelor's degree (BA, BS)",3.93,1.73,1.59,4.25,1.68,2.68,1.76,4.06,1.64,3.58
+29,"KG","TRUE","Yes",785,"Female",30,"Hispanic or Latino","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",2.31,4.09,4.88,2.98,1.07,3.94,4.32,3.54,2.23,2.97
+30,"EG-B","TRUE","Yes",533,"Male",43,"Black","Associate's degree (AA, AS)",2.41,4.48,1.28,1.33,1.46,4.4,2.59,4.81,4.16,2.06
+31,"EG-B","TRUE","Yes",611,"Female",45,"Black","Bachelor's degree (BA, BS)",4.16,2.25,3.41,2.86,1.26,1.31,1.38,2.55,4.05,2.37
+32,"EG-B","TRUE","Yes",558,"Male",35,"Other","Bachelor's degree (BA, BS)",2.46,4.66,1.78,3.39,4.22,2.14,4.56,2,4.36,1.28
+33,"KG","TRUE","Yes",588,"Male",42,"Black","Bachelor's degree (BA, BS)",2.13,4.66,3.26,4.66,1.53,1.44,3.12,1.11,1.36,1.34
+34,"EG-B","TRUE","Yes",619,"Female",51,"Asian","Regular high school diploma",2.04,4.23,1.59,1.19,1.36,1.89,4.3,2.41,2.29,4.79
+35,"KG","TRUE","Yes",612,"Male",34,"White","Associate's degree (AA, AS)",1.11,2.41,4.3,4.27,4.57,1.19,2.14,1.85,2.99,4.07
+36,"EG-B","TRUE","Yes",597,"Female",39,"Asian","Associate's degree (AA, AS)",3.63,3.7,2.32,1.35,3.94,1.24,4.11,2.26,1.74,4.84
+37,"KG","TRUE","Yes",611,"Male",52,"Asian","1 or more years of college credit, no degree",3.99,2.08,2.9,2.08,3.01,3.13,1.58,2.13,2.18,4.57
+38,"KG","TRUE","Yes",551,"Female",21,"Hispanic or Latino","Regular high school diploma",3.52,4.83,1.76,4.39,2.11,1.39,1.91,2.18,3.49,4.97
+39,"EG-B","TRUE","Yes",550,"Female",53,"White","Associate's degree (AA, AS)",1.22,1.49,3.08,4.67,1.43,2.67,3.41,4.01,2.17,2.16
+40,"EG-B","TRUE","Yes",434,"Female",43,"Hispanic or Latino","Bachelor's degree (BA, BS)",3.11,2.29,2.98,1.33,4.39,1.48,4.57,2.68,1.44,4.13
+41,"KG","TRUE","Yes",562,"Male",43,"Other","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",1.35,3.52,1.57,3.23,3.84,4.7,3.58,3.74,4.5,2.64
+42,"KG","TRUE","Yes",549,"Female",26,"Hispanic or Latino","Regular high school diploma",2.08,1.97,4.01,1.17,4.22,1.04,2.73,4.8,3.77,2.51
+43,"KG","TRUE","Yes",870,"Male",33,"Hispanic or Latino","Bachelor's degree (BA, BS)",1.01,4.71,1.04,2.04,1.06,2.93,4.59,3.02,4.41,4.83
+44,"EG-B","TRUE","Yes",464,"Female",53,"Asian","Associate's degree (AA, AS)",3.83,3.37,1.71,1.75,2.01,4.03,4.78,1.76,4.82,3.02
+45,"KG","TRUE","Yes",614,"Female",6,"White","Associate's degree (AA, AS)",4.19,2.44,1.45,3.27,2.61,4.65,3.51,3.29,4.78,1.2
+46,"EG-B","TRUE","Yes",451,"Female",23,"Black","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",1.54,3.43,3.15,1.26,2.33,4.11,1.33,3.69,1.08,1.53
+47,"EG-B","TRUE","Yes",453,"Male",42,"Asian","Associate's degree (AA, AS)",3.4,3.41,3.18,2.75,4.47,4.9,2.78,2.55,2.58,4.09
+48,"EG-B","TRUE","Yes",612,"Female",41,"White","1 or more years of college credit, no degree",2.44,4.52,1.08,3.21,1.7,1.65,2.45,4.87,2.06,4.28
+49,"EG-B","TRUE","Yes",500,"Female",44,"Asian","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",3.71,3.52,1.6,3.16,2.47,2.25,4.98,3.05,3.05,2.51
+50,"EG-B","TRUE","Yes",600,"Female",45,"Other","Regular high school diploma",2.46,4.46,3.23,2.02,1.11,2.76,3,1.15,4.05,1.17
+51,"KG","TRUE","Yes",557,"Female",18,"Hispanic or Latino","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",4.2,4.69,4.02,1.66,4.62,3.6,2.03,3.43,1.24,2.82
+52,"KG","TRUE","Yes",539,"Female",47,"White","1 or more years of college credit, no degree",4.95,3.28,3.65,3.91,4.36,3.76,3.9,4.27,4.73,1.38
+53,"KG","TRUE","Yes",398,"Female",21,"Asian","Regular high school diploma",2.93,3.99,4.06,1.82,4.85,1.8,1.63,3.69,2.4,2.08
+54,"EG-B","TRUE","Yes",478,"Male",33,"White","Bachelor's degree (BA, BS)",1.31,2.57,1.57,3.35,3.46,4.2,2.26,1.63,2.65,4.74
+55,"KG","TRUE","Yes",618,"Female",11,"Asian","1 or more years of college credit, no degree",1.54,1.57,3.34,4.65,1.49,4.08,2.19,4.86,4.84,4.45
+56,"EG-B","TRUE","Yes",657,"Male",40,"White","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",4.58,4.78,3.83,1.83,4.7,3.64,3.72,4.7,3.12,5
+57,"EG-B","TRUE","Yes",551,"Male",45,"Black","Associate's degree (AA, AS)",3.85,1.97,2.68,4.33,1.5,1.56,2.82,1.53,2.35,1.52
+58,"KG","TRUE","Yes",600,"Female",14,"Hispanic or Latino","1 or more years of college credit, no degree",4.5,1.09,4.96,2.24,3.22,3.67,1.08,4.15,3.52,3.18
+59,"KG","TRUE","Yes",712,"Male",2,"Other","Regular high school diploma",4.62,1.91,1.34,1.75,1.72,1.61,3.9,4.72,1.49,4.33
+60,"KG","TRUE","Yes",744,"Female",38,"Black","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",2.91,1.95,3.2,3.08,4.95,3.31,2.31,3.58,4.59,4.87
+61,"EG-B","TRUE","Yes",490,"Female",45,"White","Associate's degree (AA, AS)",1.27,3.23,2.51,1.74,3.81,3.45,3.64,4,3.07,4.68
+62,"EG-B","TRUE","Yes",588,"Male",35,"Other","1 or more years of college credit, no degree",3.88,3.65,2.55,1.9,2.02,1.6,2.42,2.83,4.24,1.63
+63,"EG-B","TRUE","Yes",720,"Female",28,"Hispanic or Latino","1 or more years of college credit, no degree",2.09,2.99,2.3,4.83,4.19,3.14,2.83,1.24,4.57,1.2
+64,"KG","TRUE","Yes",553,"Female",45,"Black","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",2.31,1.46,4.99,1.77,2.5,3.29,3.34,1.13,2.52,4.33
+65,"EG-B","TRUE","Yes",595,"Female",16,"Other","Regular high school diploma",2.54,3.57,3.99,4.89,4.55,3.41,1.78,2.56,1.23,1.52
+66,"KG","TRUE","Yes",591,"Female",51,"Black","Bachelor's degree (BA, BS)",2.32,3.51,4.12,4.72,1.55,4.37,2.04,1.75,2.38,2.53
+67,"KG","TRUE","Yes",511,"Female",16,"Asian","Bachelor's degree (BA, BS)",1.39,2.02,4.62,1.87,4.61,3.11,4.48,2.06,2.6,3.89
+68,"EG-B","TRUE","Yes",556,"Female",45,"White","1 or more years of college credit, no degree",3.32,1.94,3.67,2.44,4.61,1.98,1.48,1.8,3.43,1.23
+69,"EG-B","TRUE","Yes",597,"Female",45,"Hispanic or Latino","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",4.02,2.41,3.77,1.39,4.44,2.19,4.28,1.7,3.72,1.68
+70,"KG","TRUE","Yes",559,"Male",8,"Asian","1 or more years of college credit, no degree",3.07,2.23,4.78,4.47,3.13,4.38,3.29,4.58,1.83,2.53
+71,"KG","TRUE","Yes",711,"Male",45,"Black","Associate's degree (AA, AS)",2.1,4.08,1.52,4.98,4.31,2.79,1.94,1.25,4.9,1.98
+72,"KG","TRUE","Yes",552,"Male",38,"Hispanic or Latino","Bachelor's degree (BA, BS)",2.78,1.91,4.8,3.29,4.74,3.79,3.3,2.64,1.11,2.67
+73,"KG","TRUE","Yes",557,"Male",38,"White","Associate's degree (AA, AS)",4.58,2.84,4.81,3.36,3.26,4.79,4.02,2.24,2.08,2.31
+74,"KG","TRUE","Yes",670,"Female",8,"White","Associate's degree (AA, AS)",4.69,4.35,1.35,3.8,2.58,3.29,1.41,2.72,2.21,1.51
+75,"KG","TRUE","Yes",494,"Male",31,"Asian","Regular high school diploma",3.09,2.03,4.38,3.3,1.75,2.97,3.69,2.33,4.74,2.46
+76,"EG-B","TRUE","Yes",596,"Male",37,"Black","1 or more years of college credit, no degree",4.06,2.84,4.03,1.65,4.53,2.99,1.45,1.95,3.43,3.38
+77,"KG","TRUE","Yes",445,"Female",23,"Other","Bachelor's degree (BA, BS)",4.07,4.34,3.35,3.12,1.94,1.37,4.41,2.49,2.33,4.04
+78,"KG","TRUE","Yes",717,"Male",41,"Asian","Bachelor's degree (BA, BS)",4.35,2.32,2.22,3,4.78,4.83,2.6,2.96,3.24,3.16
+79,"KG","TRUE","Yes",573,"Female",10,"Hispanic or Latino","Bachelor's degree (BA, BS)",4.76,3.02,1.05,4.68,3.63,1.8,3.24,1.08,1.61,2.09
+80,"KG","TRUE","Yes",553,"Female",11,"White","Associate's degree (AA, AS)",2.69,4.09,2.29,2.81,1.64,3.13,2.94,1.12,2.83,4.74
+81,"KG","TRUE","Yes",476,"Male",27,"Hispanic or Latino","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",3.42,1.72,1.68,2.7,4.82,1.54,1.51,3.68,1.51,3.14
+82,"KG","TRUE","Yes",599,"Female",23,"Other","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",1.88,4.97,1.88,1.31,1.62,1.96,4.35,4.3,1.25,4.48
+83,"KG","TRUE","Yes",520,"Male",33,"Other","Regular high school diploma",4.44,4.83,2.89,4.71,4.82,1.74,4.16,4.09,2.65,4.08
+84,"EG-B","TRUE","Yes",547,"Male",22,"Black","1 or more years of college credit, no degree",4.71,3.07,1.03,2.25,3.61,3.64,3.65,4.07,3.19,3.8
+85,"EG-B","TRUE","Yes",729,"Female",15,"White","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",3.33,1.49,4.11,2.65,1.11,1.41,1.93,4.14,2.96,1.25
+86,"KG","TRUE","Yes",582,"Female",4,"Hispanic or Latino","Associate's degree (AA, AS)",3.64,3.25,4.17,2.58,2.69,2.12,4.82,4.67,3.42,4.06
+87,"KG","TRUE","Yes",493,"Female",39,"Asian","Regular high school diploma",1.26,1.15,1.48,3.77,1.81,1.02,3.8,4.12,2.49,1.98
+88,"KG","TRUE","Yes",616,"Male",43,"Black","Associate's degree (AA, AS)",1.98,4.82,1.77,3.37,3.48,1.9,3.34,2.68,4.92,1.47
+89,"KG","TRUE","Yes",564,"Male",10,"Hispanic or Latino","Regular high school diploma",3.04,1.05,5,1.6,4.69,3.99,4.81,3.32,4.41,4.22
+90,"KG","TRUE","Yes",659,"Female",8,"Other","Regular high school diploma",3.06,3.31,4.61,2.37,3.31,1.11,4.65,4.19,1.03,4.93
+91,"EG-B","TRUE","Yes",743,"Male",31,"Asian","1 or more years of college credit, no degree",4.05,3.97,1.02,3.27,1.57,3.98,1.31,4.72,3.3,2.41
+92,"KG","TRUE","Yes",501,"Male",28,"Black","Associate's degree (AA, AS)",2.07,1.75,3.9,4.04,2.46,3.48,1.27,1.45,1.62,1.35
+93,"KG","TRUE","Yes",645,"Female",35,"Black","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",3.75,2.19,2.63,4.54,1.21,2.6,4.76,1.76,2.83,1.02
+94,"EG-B","TRUE","Yes",608,"Female",45,"White","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",3.23,2.79,1.09,3.95,1.46,2.37,1.67,4.08,3.52,2.76
+95,"EG-B","TRUE","Yes",690,"Male",20,"Asian","Regular high school diploma",2.72,2.57,2.59,2.74,3.9,1.94,4.65,1.44,2.09,1.78
+96,"EG-B","TRUE","Yes",577,"Male",48,"Hispanic or Latino","Associate's degree (AA, AS)",4.44,3.63,1.71,1.08,1.67,4.06,1.67,3.51,1.42,1.23
+97,"KG","TRUE","Yes",684,"Male",8,"White","1 or more years of college credit, no degree",1.45,3.46,2.01,4.6,4.83,1.83,2.19,3.53,1.39,4.17
+98,"KG","TRUE","Yes",425,"Female",32,"Black","1 or more years of college credit, no degree",2.27,3.92,4.65,1.5,1.24,1.9,1.15,4.47,4.86,2.25
+99,"EG-B","TRUE","Yes",769,"Female",3,"Hispanic or Latino","1 or more years of college credit, no degree",3.96,2.28,2.5,4.99,4.89,3.62,2.6,3.68,1.1,2.34
+100,"EG-B","TRUE","Yes",686,"Female",41,"White","1 or more years of college credit, no degree",3.19,1.58,2.2,1.26,2.97,2.99,3.45,4.39,4.59,4.94
+101,"EG-B","TRUE","Yes",585,"Male",48,"Asian","Bachelor's degree (BA, BS)",1.72,1.22,4.08,4.31,3.81,3.36,1.99,1.91,3.34,2.37
+102,"KG","TRUE","Yes",455,"Female",11,"Asian","Regular high school diploma",3.73,4.82,1.06,2.42,3.9,2.73,1.09,1.53,3.65,3.78
+103,"KG","TRUE","Yes",664,"Male",13,"White","Regular high school diploma",1.42,1.1,1.76,2.61,4.06,3.65,2.14,3.06,3.04,2.77
+104,"KG","TRUE","Yes",648,"Female",39,"White","1 or more years of college credit, no degree",2.15,4.68,5,4.87,4.52,3.5,4.25,3.73,1.99,2.46
+105,"EG-B","TRUE","Yes",599,"Female",18,"Hispanic or Latino","Associate's degree (AA, AS)",3.9,2.47,1.07,3.15,3.85,3.01,3.88,3.51,4.66,4.06
+106,"EG-B","TRUE","Yes",615,"Female",39,"Asian","Associate's degree (AA, AS)",1.18,3.79,3.87,3.52,1.98,2.19,3.12,4.89,3.29,4.1
+107,"EG-B","TRUE","Yes",542,"Male",21,"White","1 or more years of college credit, no degree",1.44,3.28,3.15,2.33,2.97,3.93,1.74,3.59,3.46,2.25
+108,"EG-B","TRUE","Yes",637,"Female",5,"Asian","Regular high school diploma",2.67,2.14,2.57,1.41,4.03,4.38,3.69,2.17,3.14,2.04
+109,"KG","TRUE","Yes",629,"Male",31,"Asian","Associate's degree (AA, AS)",3.39,1.05,3,4.94,1,3.67,2.7,4.24,4.15,3.73
+110,"KG","TRUE","Yes",572,"Male",20,"White","Associate's degree (AA, AS)",1.79,2.69,4.96,3.68,1.34,3.02,3.25,4.1,4.06,3.9
+111,"EG-B","TRUE","Yes",466,"Male",18,"Hispanic or Latino","1 or more years of college credit, no degree",3,3.46,2.98,1.01,4.11,3.85,2.77,4.3,3.07,3.87
+112,"EG-B","TRUE","Yes",670,"Female",39,"Hispanic or Latino","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",4.3,1.02,4.91,2.46,2.17,4.9,4.73,3.23,2.21,2.75
+113,"EG-B","TRUE","Yes",655,"Female",49,"White","Regular high school diploma",1.37,3.65,3.99,3.13,2.39,3.76,2.85,1.03,1.83,1.62
+114,"KG","TRUE","Yes",516,"Female",3,"Black","Associate's degree (AA, AS)",2.88,1.46,3.74,3.22,3.6,4.98,3.52,2.86,2.77,1.43
+115,"KG","TRUE","Yes",441,"Female",48,"Hispanic or Latino","1 or more years of college credit, no degree",4.52,4.61,2.98,3.18,4.37,4.81,3.29,4.83,3.46,2.9
+116,"KG","TRUE","Yes",620,"Female",8,"Hispanic or Latino","Associate's degree (AA, AS)",2.74,1.4,1.22,3.2,1.28,4.05,3.74,4.06,3.61,4.72
+117,"KG","TRUE","Yes",565,"Male",19,"White","Regular high school diploma",2.11,3.26,4.12,3.34,2.06,1.58,4.78,3.7,3.53,2.18
+118,"KG","TRUE","Yes",625,"Female",50,"Hispanic or Latino","Associate's degree (AA, AS)",1.23,2.01,2.39,1.25,3.84,1.7,1.14,4.35,3.89,2.81
+119,"EG-B","TRUE","Yes",471,"Female",10,"White","1 or more years of college credit, no degree",4.54,3.32,1.09,1.24,1.2,4.74,2.3,2.14,1.83,3.65
+120,"EG-B","TRUE","Yes",504,"Male",15,"White","1 or more years of college credit, no degree",1.59,4.81,3.49,4.59,2.34,2.92,4.22,2.24,2.55,2.66
+121,"KG","TRUE","Yes",709,"Male",12,"Hispanic or Latino","Regular high school diploma",2.27,3.91,1.52,3.34,4.57,2.48,1.85,1.53,2.95,1.26
+122,"KG","TRUE","Yes",640,"Female",35,"Black","Regular high school diploma",3.72,2.62,1.72,4.3,1.91,2.3,2.58,3.38,2.24,1.42
+123,"KG","TRUE","Yes",659,"Male",52,"White","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",2.13,2.97,3.55,3.3,3.29,2.9,4.14,4.27,4.91,4.75
+124,"KG","TRUE","Yes",782,"Female",48,"Black","Regular high school diploma",2.7,3.69,1.67,2.34,1.76,4.72,1.09,4.09,4.29,4.76
+125,"EG-B","TRUE","Yes",613,"Female",32,"Other","Bachelor's degree (BA, BS)",2.95,2.87,2.45,4.58,5,3.13,3.59,3.51,1.52,4.64
+126,"KG","TRUE","Yes",400,"Male",42,"White","Bachelor's degree (BA, BS)",1.97,2.18,1.88,1.28,3.01,4.67,3.3,1.43,2.89,1.58
+127,"EG-B","TRUE","Yes",633,"Female",34,"White","Bachelor's degree (BA, BS)",2.44,3.18,4.31,3.8,4.28,2.31,3.37,4.44,4.72,1.8
+128,"EG-B","TRUE","Yes",717,"Female",40,"Black","1 or more years of college credit, no degree",1.28,3.94,1.01,1.22,3.55,2.22,3.37,4.71,1.58,3.65
+129,"KG","TRUE","Yes",806,"Male",1,"Asian","Associate's degree (AA, AS)",2.44,4.09,1.63,4.47,4.41,1.02,3.89,2.9,2.64,2.01
+130,"EG-B","TRUE","Yes",462,"Male",13,"Asian","1 or more years of college credit, no degree",4.93,4.26,4.75,4.29,3.75,2.93,4.01,1.71,1.33,4.35
+131,"EG-B","TRUE","Yes",485,"Female",7,"Black","Regular high school diploma",1.76,2.33,4.06,1.68,4.11,2.51,1.32,2.62,4.72,1.73
+132,"EG-B","TRUE","Yes",529,"Male",11,"Hispanic or Latino","1 or more years of college credit, no degree",4.49,4.56,4.29,4.26,1.59,1.55,3.92,4.89,4.27,4.79
+133,"EG-B","TRUE","Yes",495,"Male",11,"Other","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",1.45,2.23,2.01,2.8,2.09,3.07,4.42,4.95,1.8,2.78
+134,"EG-B","TRUE","Yes",535,"Male",13,"Other","Associate's degree (AA, AS)",1.78,3.8,1.47,2.01,2.04,4.21,3.85,3.14,3.51,4.45
+135,"EG-B","TRUE","Yes",581,"Female",37,"Other","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",3.92,1.77,1.53,3.3,2.42,1.16,3.7,1.08,2.89,2.23
+136,"KG","TRUE","Yes",480,"Female",34,"Black","Bachelor's degree (BA, BS)",2.08,4.91,2.68,3.73,2.04,3.85,4.91,2.13,3.53,4.53
+137,"EG-B","TRUE","Yes",804,"Male",15,"White","Bachelor's degree (BA, BS)",1.84,1.68,2.46,3.43,4.42,3.84,4.32,3.61,3.49,3.18
+138,"KG","TRUE","Yes",611,"Male",37,"Hispanic or Latino","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",3.33,1.68,1.58,3.69,3.94,4.58,4.79,4.71,4.56,3.55
+139,"EG-B","TRUE","Yes",592,"Female",14,"Hispanic or Latino","Regular high school diploma",1.34,3.51,3.08,1.98,4.42,2.1,2.1,3.6,2.82,1.12
+140,"EG-B","TRUE","Yes",650,"Male",37,"White","Bachelor's degree (BA, BS)",2.89,3.94,3.98,4.81,3.94,1.54,3.3,3.17,4.64,2.64
+141,"KG","TRUE","Yes",604,"Female",26,"Other","Associate's degree (AA, AS)",2.22,4.76,1.44,4.72,3.88,4.7,1.13,3.68,3.98,3.25
+142,"KG","TRUE","Yes",587,"Male",49,"Hispanic or Latino","Bachelor's degree (BA, BS)",4.56,4.07,2.48,3.8,4.93,3.57,2.78,4.82,4.03,1.56
+143,"KG","TRUE","Yes",748,"Female",28,"Other","1 or more years of college credit, no degree",1.85,1.67,1.89,2.08,1.65,3.42,2.26,3.85,2.73,3.02
+144,"EG-B","TRUE","Yes",578,"Male",18,"Hispanic or Latino","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",3.08,2.12,4.59,4.89,4.06,2.21,1.91,2.36,1.14,3.26
+145,"EG-B","TRUE","Yes",472,"Male",17,"Black","1 or more years of college credit, no degree",1.06,2.7,1.43,1.21,4.82,1.86,1.73,2.56,4.55,1.22
+146,"EG-B","TRUE","Yes",639,"Female",50,"White","1 or more years of college credit, no degree",3.11,4.35,4.36,3.39,2.06,4.28,4.33,2.2,2.36,3.84
+147,"KG","TRUE","Yes",565,"Male",39,"Black","Associate's degree (AA, AS)",2.54,1.61,4.38,3.63,1.34,3.27,4.95,4.51,3.27,3.43
+148,"EG-B","TRUE","Yes",548,"Female",45,"Asian","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",1.01,3.66,1.11,4.09,1.92,4.62,1.76,2.66,1.15,1.61
+149,"KG","TRUE","Yes",493,"Female",34,"White","Bachelor's degree (BA, BS)",3.27,4.27,4.06,3.99,2.33,3.41,2.36,1.03,4.02,3.09
+150,"KG","TRUE","Yes",643,"Female",12,"Black","Master's degree (MA, MS, MEng, MEd, MSW, MBA)",2.79,3.69,2.1,4.37,4.81,1.8,2.84,1.33,4.5,4.17

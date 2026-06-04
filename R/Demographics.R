@@ -194,7 +194,7 @@ data_demo <- data_clean |>
    filter(variable != "distance") |>
    transmute(
      smd = Diff.Un,
-     variable = case_match(variable,
+     variable = recode_values(variable,
                            "sd03_age"      ~ "Age",
                            "gender_female" ~ "Gender (Female)",
                            "edu_numeric"   ~ "Education (ordinal)",
@@ -203,7 +203,6 @@ data_demo <- data_clean |>
                            "eth_hispanic"  ~ "Ethnicity: Hispanic / Latino",
                            "eth_asian"     ~ "Ethnicity: Asian",
                            "eth_other"     ~ "Ethnicity: Other",
-                           .default = variable
      ),
      balanced = abs(smd) < 0.1,
      variable = fct_reorder(variable, abs(smd))
@@ -228,9 +227,12 @@ data_demo <- data_clean |>
    )
  )
 
+{
+## Saving Data ----
+  saveRDS(data_demo, here("output", "data_demographics.rds"))
 
 ## Saving Plots ----
-{
+
   # Plot 1
   ggsave(here("plots", "03_age_violin.pdf"), p_age,
          width = 18, height = 10, units = "cm", dpi = 300)

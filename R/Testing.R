@@ -48,4 +48,5 @@ results_testing <- list(
       rstatix::wilcox_effsize(mean_score ~ group_name)
 )
 print(results_testing)
+saveRDS(results_testing, here("output", "results_testing.rds"))
 }

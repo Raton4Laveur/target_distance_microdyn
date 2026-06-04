@@ -32,6 +32,10 @@ renv::restore()
 | 2 | `Demographics.R` |
 | 3 | `Visualizations.R` |
 | 4 | `Testing.R` |
+| 5 | `explorativ.R` |
+| 6 | `generate_xlsx.R` |
+
+> Alternatively, you can just run `ADMIN.R` to execute the whole pipeline as seen above
 
 ---
 
