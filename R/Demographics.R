@@ -5,6 +5,7 @@ library("ggplot2")
 library("rstatix")
 
 if (!dir.exists("plots")) dir.create("plots")
+if (!dir.exists("output")) dir.create("output")
 
 theme_set(theme_apa())
 }

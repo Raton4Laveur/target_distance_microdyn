@@ -1,6 +1,8 @@
 {
   library("rstatix")
   library("coin")
+
+  if (!dir.exists("output")) dir.create("output")
 }
 {
 results_testing <- list(
