@@ -74,5 +74,7 @@ results_explorative <- list(
       rstatix::wilcox_effsize(mean_score ~ group_name)
 )
 print(results_explorative)
-saveRDS(results_explorative, here("output", "Explorativresultate.rds"))
+openxlsx::write.xlsx(results_explorative, 
+                     file = here("output", "Explorativresultate.xlsx"), 
+                     overwrite = TRUE)
 }

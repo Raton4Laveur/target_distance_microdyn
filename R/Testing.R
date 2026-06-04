@@ -50,5 +50,7 @@ results_testing <- list(
       rstatix::wilcox_effsize(mean_score ~ group_name)
 )
 print(results_testing)
-saveRDS(results_testing, here("output", "Testresultate.rds"))
+openxlsx::write.xlsx(results_testing, 
+                     file = here("output", "Testresultate.xlsx"), 
+                     overwrite = TRUE)
 }
