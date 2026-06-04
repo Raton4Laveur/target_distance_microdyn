@@ -223,7 +223,7 @@ data_demo <- data_clean |>
                            "sd03_age"      ~ "Alter",
                            "gender_female" ~ "Geschlecht (Weiblich)",
                            "edu_numeric"   ~ "Bildung (ordinal)",
-                           "eth_white"     ~ "Ethnie: Weiß",
+                           "eth_white"     ~ "Ethnie: Weiss",
                            "eth_black"     ~ "Ethnie: Schwarz",
                            "eth_hispanic"  ~ "Ethnie: Hispanic / Latino",
                            "eth_asian"     ~ "Ethnie: Asiatisch",
