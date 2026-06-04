@@ -16,7 +16,8 @@ theme_set(theme_apa())
    labs(title = "Verteilung der Mittelwerte nach Gruppe",
         subtitle = "Histogramm & Dichtediagramm",
         x = "Gesamt-Mittelwert pro Person",
-        y = "Dichte")
+        y = NULL,
+        fill = "Gruppe")
 )
 
 ## 2. Distribution Plot by group & question type ----
@@ -28,7 +29,8 @@ theme_set(theme_apa())
    labs(title = "Verteilung der Mittelwerte nach Gruppe und Typ",
         subtitle = "Aufgeteilt nach Kontrollfragen (Anchor) vs. Manipuliert",
         x = "Mittelwert pro Person",
-        y = "Dichte")
+        y = NULL,
+        fill = "Gruppen")
 )
 
 
@@ -59,9 +61,9 @@ theme_set(theme_apa())
    scale_fill_apa() +
    labs(title = "Vergleich der Kontroll- vs. manipulierten Werte",
         subtitle = "Weiße Rauten repräsentieren den Gruppenmittelwert",
-        x = "Fragenkategorie", 
+        x = NULL, 
         y = "Mittelwert", 
-        fill = "Gruppe")
+        fill = "Gruppen")
 )
 
 

@@ -79,7 +79,8 @@ data_demo <- data_clean |>
     title    = "Altersverteilung nach Gruppen",
     subtitle = "Violine = Gesamtverteilung; Box = IQR; Raute = Mittelwert",
     x = NULL, y = "Alter (Jahre)"
-  )
+  ) +
+    theme(legend.position = "none")
 )
   
 
@@ -141,7 +142,8 @@ data_demo <- data_clean |>
     title    = "Kategoriale demografische Zusammensetzung nach Gruppen",
     subtitle = "Anteile innerhalb jeder Gruppe; Balken sind direkt miteinander vergleichbar",
     x = "Anteil (%)", 
-    y = NULL
+    y = NULL,
+    fill = "Gruppen"
   )
 )
 

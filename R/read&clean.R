@@ -41,7 +41,7 @@ data_analysis <- data_clean |>
   mutate(type = if_else(question %in% c("kap_par_01", "kap_par_02", "kap_par_08"), 
                         "Anchor", "Manipulated")) |>
   mutate(type = case_when(
-    type == "Anchor" ~ "Kontrollfragen (Anker)",
+    type == "Anchor" ~ "Anker",
     type == "Manipulated" ~ "Manipuliert",
     TRUE ~ as.character(type)
   )) |>

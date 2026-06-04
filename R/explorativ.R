@@ -64,13 +64,13 @@ results_explorative <- list(
   "Wilcoxon-test_Anchor_between_groups" =
     #Anchor between KG & TG ----
     data_analysis |>
-      filter(type == "Kontrollfragen (Anker)") |>
+      filter(type == "Anker") |>
       rstatix::wilcox_test(mean_score ~ group_name, alternative = "two.sided") |> 
       add_significance()
     ,
   "Wilcoxon-effectsize_Anchor_between_groups" =
     data_analysis |>
-      filter(type == "Kontrollfragen (Anker)") |>
+      filter(type == "Anker") |>
       rstatix::wilcox_effsize(mean_score ~ group_name)
 )
 print(results_explorative)
