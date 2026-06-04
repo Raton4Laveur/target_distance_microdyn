@@ -74,5 +74,5 @@ results_explorative <- list(
       rstatix::wilcox_effsize(mean_score ~ group_name)
 )
 print(results_explorative)
-saveRDS(results_explorative, here("output", "results_explorative.rds"))
+saveRDS(results_explorative, here("output", "Explorativresultate.rds"))
 }

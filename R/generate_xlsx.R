@@ -41,12 +41,12 @@ xlsx_output <- data_analysis |>
          `95% CI Lower` = CI_lower, `95% CI Upper` = CI_upper)
 
 # 2. The "Clean Room" Function (Executes and disappears)
-save_apa_excel <- function(df, filename = "descriptive_stats.xlsx") {
+save_apa_excel <- function(df, filename = "Deskriptivstatistik.xlsx") {
   wb <- createWorkbook()
-  addWorksheet(wb, "Descriptive Statistics")
+  addWorksheet(wb, "Deskriptivstatistik")
   
   # Configuration
-  FONT <- "Times New Roman"; ws <- "Descriptive Statistics"
+  FONT <- "Times New Roman"; ws <- "Deskriptivstatistik"
   n_cols <- ncol(df); DATA_END <- 4 + nrow(df) - 1
   
   # Styles
@@ -58,9 +58,9 @@ save_apa_excel <- function(df, filename = "descriptive_stats.xlsx") {
   s_bottom <- createStyle(fontName = FONT, border = "bottom")
   
   # Writing
-  writeData(wb, ws, "Table 1", startRow = 1)
+  writeData(wb, ws, "Tabelle 1", startRow = 1)
   addStyle(wb, ws, s_title, rows = 1, cols = 1)
-  writeData(wb, ws, "Descriptive Statistics for Mean Scores", startRow = 2)
+  writeData(wb, ws, "Deskriptivstatistik der Mittelwerte", startRow = 2)
   addStyle(wb, ws, s_note, rows = 2, cols = 1)
   
   writeData(wb, ws, df, startRow = 3, colNames = TRUE)
@@ -70,12 +70,12 @@ save_apa_excel <- function(df, filename = "descriptive_stats.xlsx") {
   addStyle(wb, ws, s_bottom, rows = DATA_END, cols = 1:n_cols, stack = TRUE)
   
   # Footer Note
-  writeData(wb, ws, "Note. n = sample size; SD = std. deviation; Skew/Kurt = excess.", startRow = DATA_END + 2)
+  writeData(wb, ws, "Anmerkung. n = Stichprobengrösse; SD = Standardabweichung; Skew/Kurt = Exzess.", startRow = DATA_END + 2)
   addStyle(wb, ws, s_note, rows = DATA_END + 2, cols = 1)
   
   # Formatting
   setColWidths(wb, ws, cols = 1:2, widths = 15)
-  setColWidths(wb, ws, cols = 3:n_cols, widths = 10)
+  setColWidths(wb, ws, cols = 3:n_cols, widths = 25)
   showGridLines(wb, ws, showGridLines = FALSE)
   
   saveWorkbook(wb, here("output", filename), overwrite = TRUE)

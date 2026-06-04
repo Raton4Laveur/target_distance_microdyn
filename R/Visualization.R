@@ -13,9 +13,10 @@ theme_set(theme_apa())
    geom_density(alpha = 0.2) +
    facet_wrap(~group_name) + 
    scale_fill_apa() +
-   labs(title = "Distribution of Mean Scores by Group",
-        subtitle = "Histogram & Density Plot",
-        x = "Mean Score per Participant")
+   labs(title = "Verteilung der Mittelwerte nach Gruppe",
+        subtitle = "Histogramm & Dichtediagramm",
+        x = "Gesamt-Mittelwert pro Person",
+        y = "Dichte")
 )
 
 ## 2. Distribution Plot by group & question type ----
@@ -24,9 +25,10 @@ theme_set(theme_apa())
    geom_density(alpha = 0.2) +
    facet_grid(type ~ group_name) + 
    scale_fill_apa() +
-   labs(title = "Distribution of Mean Scores by Group and Type",
-       subtitle = "Faceted by Anchor vs Manipulated",
-       x = "Mean Score per Participant")
+   labs(title = "Verteilung der Mittelwerte nach Gruppe und Typ",
+        subtitle = "Aufgeteilt nach Kontrollfragen (Anchor) vs. Manipuliert",
+        x = "Mittelwert pro Person",
+        y = "Dichte")
 )
 
 
@@ -41,7 +43,9 @@ theme_set(theme_apa())
       strip.background = element_rect(fill = "grey95", colour = "grey30"),
       legend.position = "none"
     ) +
-   labs(title = "QQ-Plots: Normality Check per Condition")
+   labs(title = "QQ-Plots: Prüfung auf Normalverteilung je Bedingung",
+        x = "Theoretische Quantile",
+        y = "Beobachtete Quantile")
 )
 
 
@@ -53,9 +57,11 @@ theme_set(theme_apa())
   stat_summary(fun = mean, geom = "point", shape = 18, size = 4, color = "white", 
                position = position_dodge(0.7)) +
    scale_fill_apa() +
-   labs(title = "Comparison of Anchor vs. Manipulated Scores",
-       subtitle = "White diamonds represent group means",
-       x = "Question Category", y = "Mean Score", fill = "Group")
+   labs(title = "Vergleich der Kontroll- vs. manipulierten Werte",
+        subtitle = "Weiße Rauten repräsentieren den Gruppenmittelwert",
+        x = "Fragenkategorie", 
+        y = "Mittelwert", 
+        fill = "Gruppe")
 )
 
 
@@ -63,19 +69,19 @@ theme_set(theme_apa())
 ## 5. Saving all Plots ----
 {
 # Plot 1
-ggsave(here("plots", "01_distribution_plot.pdf"), 
+ggsave(here("plots", "01_Verteilungsplot.pdf"), 
        plot = p1, 
        width = 8, 
        height = 6
        )
 # Plot 2
-ggsave(here("plots", "XX_seperate_distribution_plot.pdf"), 
+ggsave(here("plots", "XX_Verteilung nach Gruppe.pdf"), 
        plot = p2, 
        width = 8, 
        height = 6
        )
 # Plot 3
-ggsave(here("plots", "02_qq_normality_check.png"), 
+ggsave(here("plots", "02_qq_Normalverteilung.png"), 
        plot = p3, 
        width = 8, 
        height = 6, 

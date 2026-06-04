@@ -18,20 +18,20 @@ recode_education <- function(x) {
     x %in% c("No schooling completed", "Nursery school", "Kindergarten",
              "Grade 1 through 11", "12th Grade - NO DIPLOMA",
              "Regular high school diploma", "GED or alternative credential")
-    ~ "High School or Less",
+    ~ "Abitur / Obligatorische Schulzeit",
     x %in% c("Some college credit, but less than 1 year of college credit",
              "1 or more years of college credit, no degree")
-    ~ "Some College",
+    ~ "Studium ohne Abschluss",
     x == "Associate's degree (AA, AS)"
-    ~ "Associate's",
+    ~ "Berufsakademie / FH",
     x == "Bachelor's degree (BA, BS)"
-    ~ "Bachelor's",
+    ~ "Bachelor",
     x %in% c("Master's degree (MA, MS, MEng, MEd, MSW, MBA)",
              "Professional degree (MD, DDS, DVM, LLB, JD)",
              "Doctorate degree (PhD, EdD)")
-    ~ "Graduate",
+    ~ "Master / Promotion",
     x == "Prefer not to say"
-    ~ "Prefer not to say",
+    ~ "Keine Angabe",
     TRUE ~ NA_character_
   )
 }
@@ -45,7 +45,7 @@ data_demo <- data_clean |>
     group_name     = as.factor(group_name),
     sd05_education = factor(recode_education(as.character(sd05_education)),
                             levels = c(
-                              "High School or Less", "Some College", "Associate's", "Bachelor's", "Graduate"
+                              "Abitur / Obligatorische Schulzeit", "Studium ohne Abschluss", "Berufsakademie / FH", "Bachelor", "Master / Promotion"
                             ), ordered = TRUE)
   ) |>
   # Exclude "Prefer not to say" from gender, ethnicity, and education globally
@@ -71,9 +71,9 @@ data_demo <- data_clean |>
     coord_flip() +
   
   labs(
-    title    = "Age Distribution by Group",
-    subtitle = "Violin = full distribution; box = IQR; diamond = mean",
-    x = NULL, y = "Age (years)"
+    title    = "Altersverteilung nach Gruppen",
+    subtitle = "Violine = Gesamtverteilung; Box = IQR; Raute = Mittelwert",
+    x = NULL, y = "Alter (Jahre)"
   )
 )
   
@@ -84,6 +84,22 @@ data_demo <- data_clean |>
 (p_grouped_bar <- data_demo |>
   # 1. Prepare and Pivot
   mutate(across(c(sd02_gender, sd04_ethnicity, sd05_education), as.character)) |>
+
+  # Übersetzung der ethnischen Kategorien im Datensatz für den Plot
+  mutate(sd04_ethnicity = case_when(
+    sd04_ethnicity == "White" ~ "Weiß",
+    sd04_ethnicity == "Black" ~ "Schwarz / Afroamerikanisch",
+    sd04_ethnicity == "Hispanic or Latino" ~ "Hispanic / Latino",
+    sd04_ethnicity == "Asian" ~ "Asiatisch",
+    sd04_ethnicity == "Other" ~ "Andere",
+    TRUE ~ sd04_ethnicity
+  )) |>
+  mutate(sd02_gender = case_when(
+    sd02_gender == "Female" ~ "Weiblich",
+    sd02_gender == "Male" ~ "Männlich",
+    TRUE ~ sd02_gender
+  )) |>
+
   pivot_longer(
     cols = c(sd02_gender, sd04_ethnicity, sd05_education),
     names_to = "variable", 
@@ -99,9 +115,9 @@ data_demo <- data_clean |>
   # 4. Refactor Labels and Ordering
   mutate(
     variable = recode_values(variable,
-                             "sd02_gender"    ~ "Gender",
-                             "sd04_ethnicity" ~ "Ethnicity",
-                             "sd05_education" ~ "Education"
+                             "sd02_gender"    ~ "Geschlecht",
+                             "sd04_ethnicity" ~ "Ethnie",
+                             "sd05_education" ~ "Bildung"
                              ),
     category = fct_reorder(category, prop, .desc = FALSE)
   ) |> 
@@ -116,9 +132,9 @@ data_demo <- data_clean |>
     scale_fill_apa() +
     theme(legend.position = "bottom") +
   labs(
-    title    = "Categorical Demographic Breakdown by Group",
-    subtitle = "Proportions within each group; bars are directly comparable between groups",
-    x = "Proportion (%)", 
+    title    = "Kategoriale demografische Zusammensetzung nach Gruppen",
+    subtitle = "Anteile innerhalb jeder Gruppe; Balken sind direkt miteinander vergleichbar",
+    x = "Anteil (%)", 
     y = NULL
   )
 )
@@ -149,16 +165,16 @@ data_demo <- data_clean |>
     scale_y_continuous(labels = scales::percent_format(), expand = c(0,0)) +
     scale_fill_brewer(
       palette = "Greys", 
-      name = "Education Level",
+      name = "Bildungsniveau",
       guide = guide_legend(reverse = TRUE)
     ) +
     coord_flip() +
     theme_apa() +
     theme(legend.position = "right") +
     labs(
-      title    = "Educational Makeup by Group",
-      subtitle = "Proportional breakdown; labels shown for segments ≥ 5%",
-      x = NULL, y = "Proportion (%)"
+      title    = "Bildungsstruktur nach Gruppe",
+      subtitle = "Prozentuale Anteile innerhalb jeder Gruppe",
+      x = NULL, y = "Anteil (%)"
     ))
 
 
@@ -196,14 +212,14 @@ data_demo <- data_clean |>
    transmute(
      smd = Diff.Un,
      variable = recode_values(variable,
-                           "sd03_age"      ~ "Age",
-                           "gender_female" ~ "Gender (Female)",
-                           "edu_numeric"   ~ "Education (ordinal)",
-                           "eth_white"     ~ "Ethnicity: White",
-                           "eth_black"     ~ "Ethnicity: Black",
-                           "eth_hispanic"  ~ "Ethnicity: Hispanic / Latino",
-                           "eth_asian"     ~ "Ethnicity: Asian",
-                           "eth_other"     ~ "Ethnicity: Other",
+                           "sd03_age"      ~ "Alter",
+                           "gender_female" ~ "Geschlecht (Weiblich)",
+                           "edu_numeric"   ~ "Bildung (ordinal)",
+                           "eth_white"     ~ "Ethnie: Weiß",
+                           "eth_black"     ~ "Ethnie: Schwarz",
+                           "eth_hispanic"  ~ "Ethnie: Hispanic / Latino",
+                           "eth_asian"     ~ "Ethnie: Asiatisch",
+                           "eth_other"     ~ "Ethnie: Andere",
      ),
      balanced = abs(smd) < 0.1,
      variable = fct_reorder(variable, abs(smd))
@@ -222,9 +238,9 @@ data_demo <- data_clean |>
    theme(
    ) +
    labs(
-     title    = "Group Balance on Demographic Covariates",
-     subtitle = "Standardised mean differences (SMD); dashed lines mark the |0.1| balance threshold",
-     x = "Standardised Mean Difference", y = NULL
+     title    = "Gruppenbalance der demographischen Kovarianten",
+     subtitle = "Standardisierte Mittelwertsdifferenzen (SMD); Gestrichelte Linien markieren die Toleranzgrenze von |0,1|",
+     x = "(SMD)", y = NULL
    )
  )
 
@@ -235,13 +251,13 @@ data_demo <- data_clean |>
 ## Saving Plots ----
 
   # Plot 1
-  ggsave(here("plots", "03_age_violin.pdf"), p_age,
+  ggsave(here("plots", "03_alter_violinen.pdf"), p_age,
          width = 18, height = 10, units = "cm", dpi = 300)
   # Plot 2
-  ggsave(here("plots", "04_edu_group.pdf"), p_edu_group,
+  ggsave(here("plots", "04_bildung_gruppe.pdf"), p_edu_group,
          width = 22, height = 10, units = "cm", dpi = 300)
   # Plot 3
-  ggsave(here("plots", "05_grouped_bar.pdf"), p_grouped_bar,
+  ggsave(here("plots", "05_kategorial_balken.pdf"), p_grouped_bar,
          width = 18, height = 28, units = "cm", dpi = 300)
   # Plot 4
   ggsave(here("plots", "06_love_plot.pdf"), p_love, 
