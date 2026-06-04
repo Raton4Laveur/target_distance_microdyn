@@ -35,7 +35,7 @@ renv::restore()
 | 5 | `explorativ.R` |
 | 6 | `generate_xlsx.R` |
 
-> Alternativ kann man einfach `Admin.R` laufen lassen.
+> Alternativ kann man einfach `ADMIN.R` laufen lassen.
 
 ---
 
