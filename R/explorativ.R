@@ -7,6 +7,17 @@
 {
 results_explorative <- list(
   
+  "Descriptive_Statistics-Age" =
+  data_demo |>
+    group_by(group_name) |>
+    summarise(
+      mean_age = mean(sd03_age, na.rm = TRUE),
+      SD = sd(sd03_age, na.rm = TRUE),
+      median =median(sd03_age, na.rm = TRUE),
+      IQR = IQR(sd03_age, na.rm = TRUE)
+    )
+  ,
+  
   # Test for Age disparity significance
   "KS-test_age" =
     data_demo |>

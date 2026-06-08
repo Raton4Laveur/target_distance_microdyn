@@ -41,7 +41,7 @@ data_demo <- data_clean |>
   select(pid, group_name, sd02_gender, sd03_age, sd04_ethnicity, sd05_education) |>
   mutate(
     # sd03_age is a 1-100 index; participants are all 18+, so index maps to age as 17 + sd03_age
-    sd03_age       = 17 + sd03_age,
+    sd03_age       = sd03_age,
     group_name     = as.factor(group_name),
     sd05_education = factor(recode_education(as.character(sd05_education)),
                             levels = c(
