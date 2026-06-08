@@ -8,15 +8,15 @@
 results_explorative <- list(
   
   "Descriptive_Statistics-Age" =
-  data_demo |>
-    group_by(group_name) |>
-    summarise(
-      mean_age = mean(sd03_age, na.rm = TRUE),
-      SD = sd(sd03_age, na.rm = TRUE),
-      median =median(sd03_age, na.rm = TRUE),
-      IQR = IQR(sd03_age, na.rm = TRUE)
-    )
-  ,
+    data_demo |>
+      group_by(group_name) |>
+        summarise(
+          mean_age = mean(sd03_age, na.rm = TRUE),
+          SD = sd(sd03_age, na.rm = TRUE),
+          median =median(sd03_age, na.rm = TRUE),
+          IQR = IQR(sd03_age, na.rm = TRUE)
+        )
+    ,
   
   # Test for Age disparity significance
   "KS-test_age" =
@@ -48,14 +48,14 @@ results_explorative <- list(
       rstatix::wilcox_effsize(sd03_age ~ group_name)
     ,
   
-  "paired-T-test_EG-B" =
+  "paired-t-test_TG" =
     # Paired T-test comparing Anchor vs Manipulated within EG-B
     data_analysis |>
       filter(group_name == "TG") |>
       t_test(mean_score ~ type, paired = TRUE, alternative = "two.sided") |>
       add_significance()
     ,
-  "Cohens-d_EG-B" =
+  "Cohens-d_TG" =
     data_analysis |>
       filter(group_name == "TG") |>
       cohens_d(mean_score ~ type, paired = TRUE)
